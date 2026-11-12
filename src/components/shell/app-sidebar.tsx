@@ -22,11 +22,12 @@ import { collections, workspace } from "@/lib/mock";
 import { toneClasses } from "@/lib/tone";
 import { cn } from "@/lib/utils";
 
+// `match` lists every route prefix that belongs to the section, so it stays highlighted on its sub-pages.
 const nav = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/searches", label: "Sourcing", icon: UserSearch },
-  { href: "/collections", label: "Library", icon: Library },
-  { href: "/outreach", label: "Outreach", icon: Send },
+  { href: "/", label: "Dashboard", icon: LayoutDashboard, match: ["/welcome"] },
+  { href: "/search/new", label: "Sourcing", icon: UserSearch, match: ["/search", "/searches"] },
+  { href: "/collections", label: "Library", icon: Library, match: ["/collections", "/candidates"] },
+  { href: "/outreach", label: "Outreach", icon: Send, match: ["/outreach"] },
 ];
 
 function Item({ href, label, icon: Icon, active }: { href: string; label: string; icon: React.ElementType; active?: boolean }) {
@@ -80,7 +81,9 @@ export function AppSidebar({ onNavigate, onToggle }: { onNavigate?: () => void; 
 
 
       <div className="mt-3 space-y-px">
-        {nav.map((n) => <Item key={n.href} {...n} active={isActive(n.href)} />)}
+        {nav.map(({ match, ...n }) => (
+          <Item key={n.href} {...n} active={n.href === "/" ? pathname === "/" || match.some((m) => pathname.startsWith(m)) : match.some((m) => pathname.startsWith(m))} />
+        ))}
       </div>
 
       {/* Collections */}
@@ -122,8 +125,8 @@ export function AppSidebar({ onNavigate, onToggle }: { onNavigate?: () => void; 
         </div>
 
         <div className="mt-2 space-y-px">
-          <Item href="/settings/members" label="Invite team" icon={UserPlus} />
-          <Item href="/help" label="Knowledge hub" icon={BookOpen} />
+          <Item href="/settings/members" label="Invite team" icon={UserPlus} active={pathname.startsWith("/settings/members")} />
+          <Item href="/help" label="Knowledge hub" icon={BookOpen} active={pathname.startsWith("/help")} />
           <Item href="/settings" label="Account settings" icon={Settings} active={isActive("/settings") && !pathname.startsWith("/settings/members")} />
         </div>
       </div>
