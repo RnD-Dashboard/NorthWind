@@ -3,10 +3,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Bell, ChevronsUpDown, CirclePause, Folder, LogOut, MailSearch, MessageSquareReply, Plus, Radar, Search, Send, Settings } from "lucide-react";
+import { Bell, ChevronsUpDown, CircleHelp, CirclePause, CreditCard, Folder, LogOut, MailSearch, MessageSquareReply, Plus, Radar, Search, Send, Settings, UserPlus, UserRound } from "lucide-react";
 import { Dialog, DialogAction, Field, PopHeading, PopItem, PopSeparator, Popover, inputCls, textareaCls, useClose } from "@/components/ui/pop";
 import { LogoMark } from "@/components/brand/logo";
-import { collections, workspace } from "@/lib/mock";
+import { collections, user, workspace } from "@/lib/mock";
 import { allCandidates } from "@/lib/search-mock";
 import { sequences } from "@/lib/outreach-mock";
 import { toneClasses } from "@/lib/tone";
@@ -186,5 +186,34 @@ export function NewCollectionDialog({ triggerClassName, trigger, triggerLabel }:
         </div>
       </div>
     </Dialog>
+  );
+}
+
+/* ---------- Account menu (profile photo) ---------- */
+export function AccountMenu() {
+  return (
+    <Popover
+      align="end"
+      width={260}
+      triggerLabel="Account menu"
+      triggerClassName="rounded-full outline-none ring-offset-2 ring-offset-[var(--canvas)] transition-shadow hover:ring-2 hover:ring-black/10 focus-visible:ring-2 focus-visible:ring-ink-900"
+      trigger={<img src={user.avatar} alt="" className="size-7 rounded-full object-cover ring-1 ring-black/5" />}
+    >
+      <div className="flex items-center gap-3 px-2.5 pb-2.5 pt-2">
+        <img src={user.avatar} alt="" className="size-10 rounded-full object-cover ring-1 ring-black/5" />
+        <div className="min-w-0 leading-tight">
+          <div className="truncate text-[13px] font-medium">{user.name}</div>
+          <div className="truncate text-xs text-muted-foreground">alex@northwind.com</div>
+          <div className="mt-0.5 truncate text-[11px] text-gray-400">{user.role} · {workspace.name}</div>
+        </div>
+      </div>
+      <PopSeparator />
+      <PopItem icon={UserRound} href="/settings">Profile &amp; settings</PopItem>
+      <PopItem icon={CreditCard} href="/settings/plan" hint={`${workspace.searchesLimit - workspace.searchesUsed} searches left`}>Plan &amp; usage</PopItem>
+      <PopItem icon={UserPlus} href="/settings/members">Invite team</PopItem>
+      <PopItem icon={CircleHelp} href="/help">Help center</PopItem>
+      <PopSeparator />
+      <PopItem icon={LogOut} href="/login">Sign out</PopItem>
+    </Popover>
   );
 }

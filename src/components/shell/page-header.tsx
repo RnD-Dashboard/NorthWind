@@ -1,9 +1,8 @@
 import { ChevronRight } from "lucide-react";
-import { NotificationsPopover } from "@/components/popups/shell-popups";
+import { AccountMenu, NotificationsPopover } from "@/components/popups/shell-popups";
 import { UsagePopover } from "@/components/popups/page-popups";
 import { MobileMenuButton } from "./app-shell";
-import { PersonAvatar } from "@/components/ui/person";
-import { user, workspace } from "@/lib/mock";
+import { workspace } from "@/lib/mock";
 
 /** Top bar: breadcrumb on the left, usage + notifications + account on the right. */
 export function TopBar({ crumbs }: { crumbs: string[] }) {
@@ -21,7 +20,7 @@ export function TopBar({ crumbs }: { crumbs: string[] }) {
       <div className="ml-auto flex items-center gap-2">
         <UsagePopover left={workspace.searchesLimit - workspace.searchesUsed} />
         <NotificationsPopover />
-        <PersonAvatar src={user.avatar} name={user.name} className="size-7" />
+        <AccountMenu />
       </div>
     </header>
   );
