@@ -1,6 +1,6 @@
 import { Mail, MailOpen, UserCheck } from "lucide-react";
 import { TopBar } from "@/components/shell/page-header";
-import { OverviewHeader, OverviewTabs } from "@/components/home/overview-header";
+import { OverviewHeader } from "@/components/home/overview-header";
 import { SourcedCard } from "@/components/home/sourced-card";
 import { ActivityChart } from "@/components/home/activity-chart";
 import { MetricCard } from "@/components/home/metric-card";
@@ -23,8 +23,7 @@ export default function HomePage() {
       <div className="mx-auto w-full max-w-[1280px] px-4 pb-8 pt-4 lg:px-6">
         <OverviewHeader />
 
-        <div className="mt-4 space-y-3">
-          <OverviewTabs />
+        <div className="mt-5">
           <div className="grid grid-cols-2 gap-3 xl:grid-cols-12">
             <div className="contents xl:col-span-5 xl:flex xl:flex-col xl:gap-3">
               <div className="col-span-2 flex md:col-span-1 xl:block">
