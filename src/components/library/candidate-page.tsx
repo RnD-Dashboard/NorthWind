@@ -16,6 +16,7 @@ import { importanceLabel, outreachLabel, type Candidate, type Criterion, type Me
 import { toneDot } from "@/lib/tone";
 import type { Tone } from "@/lib/mock";
 import { cn } from "@/lib/utils";
+import { toast } from "@/components/ui/toaster";
 
 const card = "rounded-2xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgba(16,24,40,0.05),0_4px_12px_-6px_rgba(16,24,40,0.08)]";
 const actIcon: Record<string, React.ElementType> = { found: Search, shortlist: Star, email: Send, open: Eye, reply: MessageSquareReply };
@@ -182,11 +183,11 @@ export function CandidatePage({ c, member, searchTitle, criteria, activity, inCo
               <TabsContent value="notes" forceMount data-panel="notes" className="mt-5 space-y-3 data-[state=inactive]:hidden">
                 <form
                   className="rounded-xl border border-black/[0.08] bg-gray-25 p-3 focus-within:border-gray-300 focus-within:bg-white"
-                  onSubmit={(e) => { e.preventDefault(); if (!draft.trim()) return; setNotes([{ by: "Alex Morgan", when: "Just now", text: draft.trim() }, ...notes]); setDraft(""); }}
+                  onSubmit={(e) => { e.preventDefault(); if (!draft.trim()) return; setNotes([{ by: "Alex Morgan", when: "Just now", text: draft.trim() }, ...notes]); setDraft(""); toast("Note saved"); }}
                 >
                   <textarea id="candidate-note" rows={3} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Add a note for your team…" className="block w-full resize-none bg-transparent text-[13px] outline-none placeholder:text-gray-400" />
                   <div className="mt-2 flex justify-end">
-                    <button className="inline-flex h-8 items-center rounded-full bg-ink-900 px-3.5 text-xs font-medium text-white hover:bg-ink-800">Save note</button>
+                    <button data-save-note disabled={!draft.trim()} className="inline-flex h-8 items-center rounded-full bg-ink-900 px-3.5 text-xs font-medium text-white hover:bg-ink-800 disabled:pointer-events-none disabled:opacity-40">Save note</button>
                   </div>
                 </form>
                 <ul className="space-y-2" data-notes>
