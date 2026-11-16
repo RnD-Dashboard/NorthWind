@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, Play } from "lucide-react";
 import { Beam, Roll } from "@/components/ui/fx";
 import { APP_URL } from "@/lib/site";
-import { useInView } from "@/components/site/motion";
 
 /** Hero sign-up: work email field and the trial button in one pill. */
 export function HeroEmail() {
@@ -32,20 +31,6 @@ export function TourLink() {
     <a href="#how" className="fx-btn inline-flex items-center gap-2 text-[14px] text-gray-700 hover:text-foreground">
       <Play className="size-3.5" /><Roll>See how it works</Roll>
     </a>
-  );
-}
-
-/** "Search finished" notice that slides in over the product window once it is in view. */
-function SearchToast() {
-  const [ref, inView] = useInView<HTMLDivElement>("0px 0px -40% 0px");
-  return (
-    <div ref={ref} className="pointer-events-none absolute bottom-[14%] right-[4%] hidden w-[300px] sm:block">
-      <div className={`rounded-2xl bg-white/90 p-3.5 shadow-[0_24px_50px_-20px_rgba(16,24,40,0.5)] ring-1 ring-white backdrop-blur-xl transition-all delay-700 duration-700 ${inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
-        <div className="flex items-center gap-2 text-[10px]"><span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 font-medium text-brand-700"><span className="size-1.5 rounded-full bg-brand-500" />Search finished</span><span className="text-gray-400">just now</span></div>
-        <div className="mt-1.5 text-[13px] font-medium text-foreground">41 strong matches for Senior Product Designer</div>
-        <div className="mt-2 flex items-center gap-2"><div className="flex -space-x-1.5">{["a5", "a2", "a3"].map((a) => <img key={a} src={`/avatars/${a}.jpg`} alt="" className="size-5 rounded-full object-cover ring-2 ring-white" />)}</div><span className="text-[11px] text-gray-500">Maya, Daniel and 39 more</span></div>
-      </div>
-    </div>
   );
 }
 
@@ -75,8 +60,8 @@ export function HeroBackdrop() {
 
 /**
  * The full product window under the hero copy, with the live dashboard inside.
- * It starts tilted back 16 degrees at 93% size and straightens to 104% over the
- * first 600px of scroll, then scrolls with the page. Its bottom fades into the page.
+ * It starts tilted back 16 degrees at 93% size and straightens to 100% over the
+ * first 600px of scroll and rests at exactly 100% so the screenshot stays sharp. Its bottom fades into the page.
  */
 export function HeroProduct() {
   const p = useScrollProgress(600);
@@ -84,17 +69,16 @@ export function HeroProduct() {
   return (
     <div className="relative mx-auto w-full max-w-[1200px] px-4 [perspective:1600px] sm:px-8">
       <div
-        className="relative origin-top overflow-hidden rounded-[18px] bg-white/60 p-1.5 shadow-[0_40px_100px_-30px_rgba(16,24,40,0.55)] ring-1 ring-white/80 backdrop-blur-xl will-change-transform sm:rounded-[22px] sm:p-2"
-        style={{ transform: `rotateX(${(1 - e) * 16}deg) scale(${0.93 + 0.11 * e})` }}
+        className="relative origin-top overflow-hidden rounded-[18px] bg-white/80 p-1.5 shadow-[0_40px_100px_-30px_rgba(16,24,40,0.55)] ring-1 ring-white/80 sm:rounded-[22px] sm:p-2"
+        style={{ transform: e >= 1 ? "none" : `rotateX(${(1 - e) * 16}deg) scale(${0.93 + 0.07 * e})` }}
       >
         <div className="flex items-center gap-1.5 px-2 pb-2 pt-1 sm:px-3">
           <span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" />
           <span className="mx-auto hidden rounded-md bg-white/70 px-3 py-0.5 text-[11px] text-gray-500 ring-1 ring-black/[0.04] sm:block">app.lasso.ai</span>
         </div>
         <div className="relative overflow-hidden rounded-[12px] ring-1 ring-black/[0.06] fade-window sm:rounded-[14px]">
-          <img src="/images/app-dashboard.jpg" alt="The Lasso dashboard: candidates sourced, pipeline activity, reply rate, top matches and open roles" className="block w-full" />
+          <img src="/images/app-dashboard.webp" width={2880} height={1800} decoding="async" alt="The Lasso dashboard: candidates sourced, pipeline activity, reply rate, top matches and open roles" className="block w-full" />
         </div>
-        <SearchToast />
       </div>
     </div>
   );
