@@ -36,7 +36,7 @@ export function OutreachView() {
   const list = mails.filter((m) => (mailFilter === "scheduled" ? m.status === "scheduled" : m.status !== "scheduled"));
 
   return (
-    <div className="mx-auto w-full max-w-[1280px] px-4 pb-10 pt-4 lg:px-6">
+    <div className="w-full px-4 pb-10 pt-4 lg:px-8 2xl:px-10">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-[26px] font-medium leading-tight tracking-[-0.025em]">Outreach</h1>

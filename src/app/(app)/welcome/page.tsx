@@ -19,7 +19,7 @@ export default function WelcomePage() {
   return (
     <>
       <TopBar crumbs={["Dashboard"]} />
-      <div className="mx-auto w-full max-w-[1280px] px-4 pb-10 pt-4 lg:px-6">
+      <div className="w-full px-4 pb-10 pt-4 lg:px-8 2xl:px-10">
         <h1 className="text-[26px] font-medium leading-tight tracking-[-0.025em]">Welcome to Lasso, Alex</h1>
         <p className="mt-1 text-[13px] text-muted-foreground">Your workspace is set up. Here&apos;s how to get your first shortlist.</p>
 
