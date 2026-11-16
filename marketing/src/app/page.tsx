@@ -125,8 +125,7 @@ export default function Home() {
               </div>
             </div>
             <FadeIn className="relative grid min-h-[480px] place-items-center overflow-hidden rounded-3xl p-6">
-              <img src="/images/meadow.jpg" alt="" className="absolute inset-0 size-full object-cover" />
-              <div className="absolute inset-0 bg-ink-900/15" />
+              <img src="/images/meadow.jpg" alt="" className="absolute inset-0 size-full object-cover object-[50%_45%]" />
               <OrbitKit className="relative" />
             </FadeIn>
           </div>

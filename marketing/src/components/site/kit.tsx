@@ -275,8 +275,8 @@ const ORBIT = [
 export function OrbitKit({ className }: { className?: string }) {
   return (
     <div className={cn("relative aspect-square w-full max-w-[420px]", className)}>
-      <div aria-hidden className="absolute inset-[6%] rounded-full border border-dashed border-white/50" />
-      <div aria-hidden className="absolute inset-[24%] rounded-full border border-white/40 bg-white/10 backdrop-blur-[2px]" />
+      <div aria-hidden className="absolute inset-[6%] rounded-full border border-dashed border-ink-900/25" />
+      <div aria-hidden className="absolute inset-[24%] rounded-full border border-white/80 bg-white/30 backdrop-blur-[3px]" />
       <div className="fx-orbit absolute inset-0">
         {ORBIT.map((o, k) => {
           const a = (k / ORBIT.length) * Math.PI * 2;
