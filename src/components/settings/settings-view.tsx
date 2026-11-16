@@ -81,7 +81,7 @@ export function SettingsView({ initial = "profile" }: { initial?: Key }) {
   const [t, setT] = useState({ warm: true, track: true, unsub: false });
 
   return (
-    <div className="w-full px-4 pb-10 pt-4 lg:px-8 2xl:px-10">
+    <div className="mx-auto w-full max-w-[1684px] px-4 pb-10 pt-4 lg:px-8">
       <h1 className="text-[26px] font-medium leading-tight tracking-[-0.025em]">Settings</h1>
       <p className="mt-1 text-[13px] text-muted-foreground">Manage your profile, workspace, email account and plan.</p>
 

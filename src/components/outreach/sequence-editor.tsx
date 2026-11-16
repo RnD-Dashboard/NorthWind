@@ -34,7 +34,7 @@ export function SequenceEditor({ seq }: { seq: Sequence }) {
   const totalDays = steps.reduce((n, s) => n + s.waitDays, 0);
 
   return (
-    <div className="w-full px-4 pb-10 pt-4 lg:px-8 2xl:px-10">
+    <div className="mx-auto w-full max-w-[1684px] px-4 pb-10 pt-4 lg:px-8">
       <Link href="/outreach" className="inline-flex items-center gap-1.5 text-[13px] text-gray-500 hover:text-foreground">
         <ArrowLeft className="size-4" />Outreach
       </Link>

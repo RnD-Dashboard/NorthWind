@@ -47,7 +47,7 @@ export function CandidatePage({ c, member, searchTitle, criteria, activity, inCo
   const met = Object.values(c.results).filter((r) => r === "met").length;
 
   return (
-    <div className="w-full px-4 pb-10 pt-4 lg:px-8 2xl:px-10" data-swap-root>
+    <div className="mx-auto w-full max-w-[1684px] px-4 pb-10 pt-4 lg:px-8" data-swap-root>
       {/* Back + pager */}
       <div className="flex items-center justify-between gap-3">
         <Link href={back.href} className="inline-flex items-center gap-1.5 text-[13px] text-gray-500 hover:text-foreground">

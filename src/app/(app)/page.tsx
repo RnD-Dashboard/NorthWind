@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       <TopBar crumbs={["Dashboard"]} />
-      <div className="w-full px-4 pb-8 pt-4 lg:px-8 2xl:px-10">
+      <div className="mx-auto w-full max-w-[1684px] px-4 pb-8 pt-4 lg:px-8">
         <OverviewHeader />
 
         <div className="mt-5">

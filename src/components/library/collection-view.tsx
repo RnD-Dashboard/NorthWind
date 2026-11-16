@@ -74,7 +74,7 @@ export function CollectionView({ collectionId, rows: initialRows }: { collection
   };
 
   return (
-    <div className="w-full px-4 pb-24 pt-4 lg:px-8 2xl:px-10">
+    <div className="mx-auto w-full max-w-[1684px] px-4 pb-24 pt-4 lg:px-8">
       {/* Header */}
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="flex items-center gap-3">
