@@ -27,10 +27,9 @@ export default function Home() {
       <main>
         {/* ---------------------------------------------------------- Hero */}
         <section className="relative isolate overflow-hidden pb-14">
-          <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[78%] overflow-hidden">
+          <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[82%] overflow-hidden [mask-image:linear-gradient(to_bottom,black_0%,black_50%,rgba(0,0,0,0.55)_72%,transparent_100%)]">
             <img src="/images/hero.jpg" alt="" className="size-full object-cover object-[50%_62%]" />
             <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-b from-transparent to-canvas" />
           </div>
           <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center px-5 pt-36 text-center sm:pt-40">
             <FadeIn><Eyebrow>AI sourcing for talent teams</Eyebrow></FadeIn>
@@ -251,8 +250,8 @@ export default function Home() {
 
       {/* ------------------------------------------- Final CTA + footer */}
       <footer id="contact" className="relative isolate overflow-hidden">
-        <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%]" />
-        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[60%] bg-gradient-to-b from-white/80 via-white/40 to-transparent" />
+        <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%] [mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.45)_18%,black_45%)]" />
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-canvas via-canvas/40 to-transparent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/30 to-transparent" />
         <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-16 sm:px-10 lg:px-14">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
