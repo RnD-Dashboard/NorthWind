@@ -34,15 +34,15 @@
   );
 }
 .fx-beam-glow {
-  inset: -8px;
-  padding: 8px;
-  opacity: 0.5;
+  inset: -4px;
+  padding: 4px;
+  opacity: 0.28;
 }
 .fx-beam-glow > i {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  filter: blur(7px);
+  filter: blur(3px);
   background: conic-gradient(
     from var(--fx-beam-a),
     transparent 0deg 260deg,
