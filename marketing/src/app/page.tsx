@@ -11,7 +11,6 @@ import { FeatureTabs, Pricing } from "@/components/site/interactive";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 
-const AUDIENCE = ["Startup founders", "In-house talent teams", "Recruiting agencies", "Executive search firms", "Hiring managers", "People ops leads", "Technical recruiters"];
 const LOGOS = ["Northwind", "Halcyon", "Brightline", "Quietriver", "Fernway", "Atlas & Co"];
 
 /** Centered page column with the thin vertical rules the layout is built on. */
@@ -46,20 +45,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* ----------------------------------------------- Audience marquee */}
-        <Shell className="overflow-hidden border-b">
-          <div className="flex items-center gap-6 px-5 py-5">
-            <span className="shrink-0 text-[12px] text-gray-400">Built for people who hire</span>
-            <div className="relative min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
-              <div className="fx-marquee gap-8">
-                {[...AUDIENCE, ...AUDIENCE].map((a, i) => (
-                  <span key={i} className="inline-flex items-center gap-2 whitespace-nowrap text-[13px] text-gray-700"><span className="size-1.5 rounded-[2px] bg-brand-500" />{a}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Shell>
 
         {/* ------------------------------------------------------- Problem */}
         <Shell id="product">
