@@ -76,7 +76,7 @@ export function HeroProduct() {
           <span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" />
           <span className="mx-auto hidden rounded-md bg-white/70 px-3 py-0.5 text-[11px] text-gray-500 ring-1 ring-black/[0.04] sm:block">app.lasso.ai</span>
         </div>
-        <div className="relative overflow-hidden rounded-[12px] ring-1 ring-black/[0.06] fade-window sm:rounded-[14px]">
+        <div className="relative overflow-hidden rounded-[12px] ring-1 ring-black/[0.06] sm:rounded-[14px]">
           <img src="/images/app-dashboard.webp" width={2880} height={1800} decoding="async" alt="The Lasso dashboard: candidates sourced, pipeline activity, reply rate, top matches and open roles" className="block w-full" />
         </div>
       </div>
