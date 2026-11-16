@@ -250,7 +250,7 @@ export default function Home() {
         <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%] fade-footer" />
         <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[50%] bg-gradient-to-b from-white via-white/60 to-transparent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/30 to-transparent" />
-        <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-16 sm:px-10 lg:px-14">
+        <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-28 sm:px-10 sm:pt-36 lg:px-14 lg:pt-44">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <BlurText text="Stop searching for candidates. Start talking to them." className="max-w-[560px] text-[36px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[52px]" muted={["Start", "talking", "to", "them"]} />
