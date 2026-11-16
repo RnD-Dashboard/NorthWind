@@ -1,0 +1,59 @@
+/* Marketing motion: headline blur reveal, block rise, kit animations. Uses the design-system tokens only. */
+
+.fx-blur {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(0.12em);
+}
+.is-in .fx-blur {
+  animation: fx-blur-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes fx-blur-in {
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+
+.fx-rise { opacity: 0; transform: translateY(18px); }
+.fx-rise.is-in {
+  animation: fx-rise-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes fx-rise-in { to { opacity: 1; transform: none; } }
+
+.fx-pop { animation: fx-pop-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes fx-pop-in {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* Badges travelling along the sequence line */
+.fx-travel { left: 0; animation: fx-travel 3.3s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+@keyframes fx-travel {
+  0% { left: 0%; opacity: 0; transform: translateX(-50%) scale(0.8); }
+  10% { opacity: 1; transform: translateX(-50%) scale(1); }
+  85% { opacity: 1; }
+  100% { left: 100%; opacity: 0; transform: translateX(-50%) scale(0.8); }
+}
+
+/* Orbit */
+.fx-orbit { animation: fx-spin 48s linear infinite; }
+.fx-orbit-rev { display: inline-flex; animation: fx-spin 48s linear infinite reverse; }
+@keyframes fx-spin { to { transform: rotate(360deg); } }
+
+/* Logo / audience marquee */
+.fx-marquee { display: flex; width: max-content; animation: fx-marquee 38s linear infinite; }
+@keyframes fx-marquee { to { transform: translateX(-50%); } }
+
+/* Hatched separator band between sections */
+.band {
+  height: 40px;
+  background-image: repeating-linear-gradient(135deg, rgb(0 0 0 / 0.045) 0 1px, transparent 1px 7px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-blur, .fx-rise { opacity: 1; filter: none; transform: none; animation: none !important; }
+  .fx-orbit, .fx-orbit-rev, .fx-marquee, .fx-travel { animation: none; }
+}
+
+@keyframes fx-progress { from { width: 0%; } to { width: 100%; } }

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The marketing website is a separate project in its own folder.
+    "marketing/**",
   ]),
 ]);
 
