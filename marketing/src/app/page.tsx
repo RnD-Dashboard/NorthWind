@@ -178,8 +178,8 @@ export default function Home() {
               </ul>
             </div>
             <FadeIn className="relative grid min-h-[460px] place-items-center overflow-hidden rounded-3xl p-5 sm:p-10">
-              <img src="/images/lake.jpg" alt="" className="absolute inset-0 size-full object-cover" />
-              <div className="absolute inset-0 bg-ink-900/20" />
+              <img src="/images/lake.jpg" alt="" className="absolute inset-0 size-full object-cover object-[50%_40%]" />
+              <div className="absolute inset-0 bg-ink-900/[0.06]" />
               <ComposerKit className="relative w-full max-w-[440px]" />
             </FadeIn>
           </div>
