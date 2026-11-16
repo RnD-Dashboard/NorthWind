@@ -193,8 +193,8 @@ export default function Home() {
             <BlurText text="Built for teams that hire without a big recruiting department" className="mt-4 max-w-[620px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
             <div className="mt-10 grid gap-4 md:grid-cols-2">
               {[
-                { i: Building2, t: "Startups & in-house teams", d: "Run searches yourself instead of paying agency fees. No setup: describe the role and start reviewing people today.", img: "/images/valley.jpg" },
-                { i: Users, t: "Recruiting agencies", d: "One collection per client role, reusable talent pools and shortlists you can share. Spend your time closing, not searching.", img: "/images/hills.jpg" },
+                { i: Building2, t: "Startups & in-house teams", d: "Run searches yourself instead of paying agency fees. No setup: describe the role and start reviewing people today.", img: "/images/startups.jpg" },
+                { i: Users, t: "Recruiting agencies", d: "One collection per client role, reusable talent pools and shortlists you can share. Spend your time closing, not searching.", img: "/images/agencies.jpg" },
               ].map((c, k) => (
                 <FadeIn key={c.t} delay={k * 100} className="group relative overflow-hidden rounded-3xl ring-1 ring-black/[0.06]">
                   <div className="relative h-48 overflow-hidden"><img src={c.img} alt="" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
