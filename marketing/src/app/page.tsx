@@ -11,7 +11,7 @@ import { FeatureTabs, Pricing } from "@/components/site/interactive";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 
-const LOGOS = ["Northwind", "Halcyon", "Brightline", "Quietriver", "Fernway", "Atlas & Co"];
+const LOGOS = ["boltshift", "capsule", "catalog", "cloudwatch", "codecraft", "coreos", "cubekit", "featherdev", "galileo", "hexsmith", "interlock", "layers", "lightbox", "quotient"];
 
 /** Centered page column with the thin vertical rules the layout is built on. */
 function Shell({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
@@ -40,8 +40,12 @@ export default function Home() {
           <div className="mt-14"><HeroProduct /></div>
           <div className="mx-auto mt-12 w-full max-w-[1240px] px-5">
             <p className="text-center text-[13px] text-gray-500">Trusted by talent teams that hire every week</p>
-            <div className="mt-5 grid grid-cols-3 items-center gap-y-3 sm:grid-cols-6">
-              {LOGOS.map((l) => <span key={l} className="text-center text-[17px] font-semibold tracking-tight text-gray-400">{l}</span>)}
+            <div className="relative mt-5 overflow-hidden [-webkit-mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+              <div className="fx-marquee items-center gap-12">
+                {[...LOGOS, ...LOGOS].map((l, i) => (
+                  <img key={i} src={`/logos/${l}.svg`} alt={i < LOGOS.length ? l : ""} aria-hidden={i >= LOGOS.length} className="h-8 w-auto shrink-0 opacity-40 grayscale" />
+                ))}
+              </div>
             </div>
           </div>
         </section>
