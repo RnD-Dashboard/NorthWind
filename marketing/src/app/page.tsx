@@ -26,9 +26,9 @@ export default function Home() {
       <main>
         {/* ---------------------------------------------------------- Hero */}
         <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-          <img src="/images/hero.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%]" />
-          <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[78%] bg-gradient-to-b from-white via-white/80 to-transparent" />
-          <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-ink-900/50 to-transparent" />
+          <img src="/images/hero.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_62%]" />
+          <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[62%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
+          <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/35 to-transparent" />
           <div className="mx-auto flex w-full max-w-[1000px] flex-1 flex-col items-center px-5 pt-36 text-center sm:pt-40">
             <FadeIn><Eyebrow>AI sourcing for talent teams</Eyebrow></FadeIn>
             <BlurText as="h1" text="Describe the hire. Lasso finds the people worth talking to." className="mt-5 text-[40px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[64px] lg:text-[76px] [text-wrap:balance]" step={24} />
@@ -40,9 +40,9 @@ export default function Home() {
             <FadeIn delay={1700}><p className="mt-4 text-[12px] font-medium text-gray-600">14-day free trial · no card needed</p></FadeIn>
           </div>
           <div className="relative mx-auto w-full max-w-[1240px] px-5 pb-8">
-            <p className="text-center text-[12px] text-white/80">Trusted by talent teams that hire every week</p>
+            <p className="text-center text-[12px] text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,.35)]">Trusted by talent teams that hire every week</p>
             <div className="mt-4 grid grid-cols-3 items-center gap-y-3 sm:grid-cols-6">
-              {LOGOS.map((l) => <span key={l} className="text-center text-[17px] font-semibold tracking-tight text-white/85">{l}</span>)}
+              {LOGOS.map((l) => <span key={l} className="text-center text-[17px] font-semibold tracking-tight text-white [text-shadow:0_1px_10px_rgba(0,0,0,.35)]">{l}</span>)}
             </div>
           </div>
         </section>
