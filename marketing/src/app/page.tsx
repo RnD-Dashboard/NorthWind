@@ -86,8 +86,8 @@ export default function Home() {
         <Shell>
           <div className="px-6 pb-6 sm:px-10 sm:pb-10 lg:px-14 lg:pb-14">
             <FadeIn className="relative overflow-hidden rounded-3xl">
-              <img src="/images/hills.jpg" alt="" className="absolute inset-0 size-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-ink-900/30 via-transparent to-ink-900/20" />
+              <img src="/images/hills.jpg" alt="" className="absolute inset-0 size-full object-cover object-[50%_60%]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-900/15" />
               <div className="relative grid items-center gap-6 p-5 sm:p-10 md:grid-cols-2 lg:p-14">
                 <CriteriaCard />
                 <MatchKit />

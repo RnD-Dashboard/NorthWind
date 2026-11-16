@@ -148,14 +148,14 @@ const MATCHES = [
 /** Scored matches: rows slide in, rings fill and criteria tick one by one. */
 export function MatchKit({ className, dark }: { className?: string; dark?: boolean }) {
   const [ref, inView] = useInView<HTMLDivElement>();
-  const s = useTimeline([600, 3600, 900], inView);
-  const on = s === 1;
+  const s = useTimeline([700, 4200, 1600], inView);
+  const on = s >= 1;
   return (
     <div ref={ref} className={className}>
-      <KitFrame label="Top matches" status={on ? "Scoring" : "Ready"} dark={dark}>
+      <KitFrame label="Top matches" status={s === 1 ? "Scoring" : "Ready"} dark={dark}>
         <ul className="space-y-1.5 p-3">
           {MATCHES.map((c, i) => (
-            <li key={c.name} className={cn("flex items-center gap-3 rounded-xl p-2.5 transition-all duration-500", dark ? "bg-white/[0.05]" : "bg-gray-25 ring-1 ring-black/[0.04]", on ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0")} style={{ transitionDelay: on ? `${i * 160}ms` : "0ms" }}>
+            <li key={c.name} className={cn("flex items-center gap-3 rounded-xl p-2.5 transition-all duration-500", dark ? "bg-white/[0.05]" : "bg-gray-25 ring-1 ring-black/[0.04]", inView ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0")} style={{ transitionDelay: `${i * 160}ms` }}>
               <img src={c.a} alt="" className="size-8 rounded-full object-cover" />
               <div className="min-w-0 flex-1 leading-tight">
                 <div className="truncate text-[12px] font-medium">{c.name}</div>
