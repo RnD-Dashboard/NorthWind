@@ -1,3 +1,10 @@
+/* Headings use Newsreader Regular; body text stays on Geist from the design system. */
+h1, h2, .font-display {
+  font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+}
+
 /* Marketing motion: headline blur reveal, block rise, kit animations. Uses the design-system tokens only. */
 
 .fx-blur {

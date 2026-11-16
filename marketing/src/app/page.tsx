@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { GhostCta, Header, PrimaryCta } from "@/components/site/chrome";
+import { HeroEmail, HeroProduct, TourLink } from "@/components/site/hero";
 import { APP_URL } from "@/lib/site";
 import { FeatureTabs, Pricing } from "@/components/site/interactive";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
@@ -25,24 +26,27 @@ export default function Home() {
       <Header />
       <main>
         {/* ---------------------------------------------------------- Hero */}
-        <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-          <img src="/images/hero.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_62%]" />
-          <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[62%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
-          <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/35 to-transparent" />
-          <div className="mx-auto flex w-full max-w-[1000px] flex-1 flex-col items-center px-5 pt-36 text-center sm:pt-40">
-            <FadeIn><Eyebrow>AI sourcing for talent teams</Eyebrow></FadeIn>
-            <BlurText as="h1" text="Describe the hire. Lasso finds the people worth talking to." className="mt-5 text-[40px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[64px] lg:text-[76px] [text-wrap:balance]" step={24} />
-            <BlurText as="p" by="word" delay={900} step={28} text="Write the brief the way you'd say it. Lasso searches, scores every profile against your criteria and helps you reach out from your own inbox." className="mt-6 max-w-[620px] text-[16px] leading-relaxed text-gray-600 sm:text-[17px]" />
-            <FadeIn delay={1500} className="mt-9 flex flex-wrap items-center justify-center gap-2">
-              <PrimaryCta>Start free trial</PrimaryCta>
-              <GhostCta href="#how">See how it works</GhostCta>
-            </FadeIn>
-            <FadeIn delay={1700}><p className="mt-4 text-[12px] font-medium text-gray-600">14-day free trial · no card needed</p></FadeIn>
+        <section className="relative isolate overflow-hidden pb-14">
+          <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[78%] overflow-hidden">
+            <img src="/images/hero.jpg" alt="" className="size-full object-cover object-[50%_62%]" />
+            <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-b from-transparent to-canvas" />
           </div>
-          <div className="relative mx-auto w-full max-w-[1240px] px-5 pb-8">
-            <p className="text-center text-[12px] text-white/90 [text-shadow:0_1px_8px_rgba(0,0,0,.35)]">Trusted by talent teams that hire every week</p>
-            <div className="mt-4 grid grid-cols-3 items-center gap-y-3 sm:grid-cols-6">
-              {LOGOS.map((l) => <span key={l} className="text-center text-[17px] font-semibold tracking-tight text-white [text-shadow:0_1px_10px_rgba(0,0,0,.35)]">{l}</span>)}
+          <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center px-5 pt-36 text-center sm:pt-40">
+            <FadeIn><Eyebrow>AI sourcing for talent teams</Eyebrow></FadeIn>
+            <BlurText as="h1" text="Describe the hire. Lasso finds the people worth talking to." className="mt-5 text-[44px] leading-[1.02] sm:text-[68px] lg:text-[80px] [text-wrap:balance]" step={24} />
+            <BlurText as="p" by="word" delay={900} step={28} text="Write the brief the way you'd say it. Lasso searches, scores every profile against your criteria and helps you reach out from your own inbox." className="mt-6 max-w-[600px] text-[16px] leading-relaxed text-gray-700 sm:text-[18px]" />
+            <FadeIn delay={1400} className="mt-9 flex w-full justify-center"><HeroEmail /></FadeIn>
+            <FadeIn delay={1600} className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              <TourLink />
+              <span className="text-[12px] text-gray-600">14-day free trial · no card needed</span>
+            </FadeIn>
+          </div>
+          <div className="mt-14"><HeroProduct /></div>
+          <div className="mx-auto mt-12 w-full max-w-[1240px] px-5">
+            <p className="text-center text-[13px] text-gray-500">Trusted by talent teams that hire every week</p>
+            <div className="mt-5 grid grid-cols-3 items-center gap-y-3 sm:grid-cols-6">
+              {LOGOS.map((l) => <span key={l} className="text-center text-[17px] font-semibold tracking-tight text-gray-400">{l}</span>)}
             </div>
           </div>
         </section>
@@ -72,7 +76,7 @@ export default function Home() {
                   <FadeIn key={t} delay={i * 90}><li className="py-4">{t}</li></FadeIn>
                 ))}
               </ul>
-              <FadeIn className="mt-10"><p className="text-[26px] font-medium leading-tight tracking-[-0.02em]">The candidates are there.<br /><span className="text-gray-400">The time isn&apos;t.</span></p></FadeIn>
+              <FadeIn className="mt-10"><p className="font-display text-[28px] leading-tight">The candidates are there.<br /><span className="text-gray-400">The time isn&apos;t.</span></p></FadeIn>
             </div>
             <FadeIn className="relative min-h-[460px] overflow-hidden rounded-3xl">
               <img src="/images/forest.jpg" alt="" className="absolute inset-0 size-full object-cover" />
