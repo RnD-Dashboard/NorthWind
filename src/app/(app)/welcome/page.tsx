@@ -3,6 +3,7 @@ import { ArrowRight, Check, FolderPlus, Mail, Radar, Send, Sparkles, UserCheck }
 import { TopBar } from "@/components/shell/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { NewCollectionDialog } from "@/components/popups/shell-popups";
+import { Roll, Beam } from "@/components/ui/fx";
 
 const card = "rounded-2xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgba(16,24,40,0.05),0_4px_12px_-6px_rgba(16,24,40,0.08)]";
 const steps = [
@@ -70,8 +71,8 @@ export default function WelcomePage() {
 
         <section className={`${card} mt-3`}>
           <EmptyState compact icon={FolderPlus} title="No candidates saved yet" description="People you shortlist from a search land in a collection, ready to email together.">
-            <Link href="/search/new" className="inline-flex h-9 items-center rounded-full bg-ink-900 px-4 text-xs font-medium text-white hover:bg-ink-800">Find candidates</Link>
-            <NewCollectionDialog triggerClassName="inline-flex h-9 items-center rounded-full border border-black/[0.06] bg-white px-4 text-xs font-medium shadow-xs hover:bg-gray-25" trigger="Create a collection" />
+            <Link href="/search/new" className="fx-btn inline-flex h-9 items-center rounded-full bg-ink-900 px-4 text-xs font-medium text-white hover:bg-ink-800"><Beam /><Roll>Find candidates</Roll></Link>
+            <NewCollectionDialog triggerClassName="fx-btn inline-flex h-9 items-center rounded-full border border-black/[0.06] bg-white px-4 text-xs font-medium shadow-xs hover:bg-gray-25" trigger={<Roll>Create a collection</Roll>} />
           </EmptyState>
         </section>
       </div>
