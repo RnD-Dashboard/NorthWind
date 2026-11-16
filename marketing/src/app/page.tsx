@@ -52,7 +52,7 @@ export default function Home() {
 
         {/* ------------------------------------------------------- Problem */}
         <Shell id="product">
-          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
+          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14 lg:pb-24">
             <div className="flex flex-col">
               <Eyebrow>Sourcing is slow by default</Eyebrow>
               <BlurText text="The right people are out there. Finding them takes all week." className="mt-4 max-w-[480px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" muted={["Finding", "them", "takes", "all", "week"]} />
@@ -61,7 +61,7 @@ export default function Home() {
                   <FadeIn key={t} delay={i * 90}><li className="py-4">{t}</li></FadeIn>
                 ))}
               </ul>
-              <FadeIn className="mt-10"><p className="font-display text-[28px] leading-tight">The candidates are there.<br /><span className="text-gray-400">The time isn&apos;t.</span></p></FadeIn>
+              <FadeIn className="mt-6"><p className="font-display text-[28px] leading-tight">The candidates are there.<br /><span className="text-gray-400">The time isn&apos;t.</span></p></FadeIn>
             </div>
             <FadeIn className="relative min-h-[460px] overflow-hidden rounded-3xl">
               <img src="/images/forest.jpg" alt="" className="absolute inset-0 size-full object-cover" />
