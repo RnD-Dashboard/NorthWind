@@ -247,8 +247,8 @@ export default function Home() {
 
       {/* ------------------------------------------- Final CTA + footer */}
       <footer id="contact" className="relative isolate overflow-hidden">
-        <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%] [mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.45)_18%,black_45%)]" />
-        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[55%] bg-gradient-to-b from-canvas via-canvas/40 to-transparent" />
+        <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%] fade-footer" />
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[50%] bg-gradient-to-b from-canvas via-canvas/50 to-transparent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/30 to-transparent" />
         <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-16 sm:px-10 lg:px-14">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">

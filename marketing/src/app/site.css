@@ -64,3 +64,17 @@ h1, h2, .font-display {
 }
 
 @keyframes fx-progress { from { width: 0%; } to { width: 100%; } }
+
+/* Soft fades that blend paintings into the page (prefixed for Safari). */
+.fade-hero {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, rgb(0 0 0 / 0.55) 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 50%, rgb(0 0 0 / 0.55) 72%, transparent 100%);
+}
+.fade-footer {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.25) 14%, rgb(0 0 0 / 0.7) 32%, #000 55%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.25) 14%, rgb(0 0 0 / 0.7) 32%, #000 55%);
+}
+.fade-window {
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}

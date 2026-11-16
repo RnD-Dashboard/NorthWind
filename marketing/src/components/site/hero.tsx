@@ -5,8 +5,8 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Play } from "lucide-react";
 import { Beam, Roll } from "@/components/ui/fx";
-import { DashboardLive } from "@/components/site/dashboard-live";
 import { APP_URL } from "@/lib/site";
+import { useInView } from "@/components/site/motion";
 
 /** Hero sign-up: work email field and the trial button in one pill. */
 export function HeroEmail() {
@@ -35,6 +35,20 @@ export function TourLink() {
   );
 }
 
+/** "Search finished" notice that slides in over the product window once it is in view. */
+function SearchToast() {
+  const [ref, inView] = useInView<HTMLDivElement>("0px 0px -40% 0px");
+  return (
+    <div ref={ref} className="pointer-events-none absolute bottom-[14%] right-[4%] hidden w-[300px] sm:block">
+      <div className={`rounded-2xl bg-white/90 p-3.5 shadow-[0_24px_50px_-20px_rgba(16,24,40,0.5)] ring-1 ring-white backdrop-blur-xl transition-all delay-700 duration-700 ${inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
+        <div className="flex items-center gap-2 text-[10px]"><span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 font-medium text-brand-700"><span className="size-1.5 rounded-full bg-brand-500" />Search finished</span><span className="text-gray-400">just now</span></div>
+        <div className="mt-1.5 text-[13px] font-medium text-foreground">41 strong matches for Senior Product Designer</div>
+        <div className="mt-2 flex items-center gap-2"><div className="flex -space-x-1.5">{["a5", "a2", "a3"].map((a) => <img key={a} src={`/avatars/${a}.jpg`} alt="" className="size-5 rounded-full object-cover ring-2 ring-white" />)}</div><span className="text-[11px] text-gray-500">Maya, Daniel and 39 more</span></div>
+      </div>
+    </div>
+  );
+}
+
 /** Scroll progress over the first `range` pixels of the page (0..1). */
 function useScrollProgress(range: number) {
   const [p, setP] = useState(0);
@@ -52,7 +66,7 @@ function useScrollProgress(range: number) {
 export function HeroBackdrop() {
   const p = useScrollProgress(900);
   return (
-    <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[82%] overflow-hidden [mask-image:linear-gradient(to_bottom,black_0%,black_50%,rgba(0,0,0,0.55)_72%,transparent_100%)]">
+    <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[82%] overflow-hidden fade-hero">
       <img src="/images/hero.jpg" alt="" className="size-full origin-top object-cover object-[50%_62%] will-change-transform" style={{ transform: `scale(${1 + 0.12 * p})` }} />
       <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
     </div>
@@ -77,9 +91,10 @@ export function HeroProduct() {
           <span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" />
           <span className="mx-auto hidden rounded-md bg-white/70 px-3 py-0.5 text-[11px] text-gray-500 ring-1 ring-black/[0.04] sm:block">app.lasso.ai</span>
         </div>
-        <div className="overflow-hidden rounded-[12px] ring-1 ring-black/[0.06] [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)] sm:rounded-[14px]">
-          <DashboardLive />
+        <div className="relative overflow-hidden rounded-[12px] ring-1 ring-black/[0.06] fade-window sm:rounded-[14px]">
+          <img src="/images/app-dashboard.jpg" alt="The Lasso dashboard: candidates sourced, pipeline activity, reply rate, top matches and open roles" className="block w-full" />
         </div>
+        <SearchToast />
       </div>
     </div>
   );
