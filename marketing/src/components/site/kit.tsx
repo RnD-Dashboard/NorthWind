@@ -54,7 +54,7 @@ const mono = "font-mono text-[10px] uppercase tracking-[0.08em]";
 /** Window chrome shared by every kit: mono label on the left, live status on the right. */
 export function KitFrame({ label, status, dark, children, className }: { label: string; status: string; dark?: boolean; children: ReactNode; className?: string }) {
   return (
-    <div className={cn("overflow-hidden rounded-2xl text-left", dark ? "bg-ink-900/90 text-white ring-1 ring-white/10 backdrop-blur-xl" : "bg-white text-foreground ring-1 ring-black/[0.06]", "shadow-[0_24px_60px_-24px_rgba(16,24,40,0.35)]", className)}>
+    <div className={cn("overflow-hidden rounded-2xl text-left", dark ? "bg-ink-900/90 text-white ring-1 ring-white/10 backdrop-blur-xl" : "bg-white/90 text-foreground ring-1 ring-white backdrop-blur-xl backdrop-saturate-150", "shadow-[0_24px_60px_-24px_rgba(16,24,40,0.35)]", className)}>
       <div className={cn("flex items-center justify-between border-b px-4 py-2.5", dark ? "border-white/10" : "border-black/[0.05]")}>
         <span className={cn(mono, dark ? "text-white/45" : "text-gray-400")}>{label}</span>
         <span className={cn(mono, "inline-flex items-center gap-1.5", dark ? "text-white/70" : "text-gray-600")}>
@@ -291,7 +291,7 @@ export function OrbitKit({ className }: { className?: string }) {
       </div>
       <div className="absolute left-1/2 top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center gap-2">
         <span className="grid size-16 place-items-center rounded-2xl bg-ink-900 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)] ring-4 ring-white/40"><LogoMark className="size-10" /></span>
-        <span className={cn(mono, "rounded-md bg-ink-900/80 px-2 py-1 text-white/80")}>AI sourcer</span>
+        <span className={cn(mono, "rounded-md bg-white/90 px-2 py-1 text-gray-600 shadow-xs ring-1 ring-white backdrop-blur")}>AI sourcer</span>
       </div>
     </div>
   );
@@ -308,25 +308,25 @@ export function ComposerKit({ className }: { className?: string }) {
   const body = useTyped(EMAIL, s >= 1, 22);
   return (
     <div ref={ref} className={className}>
-      <KitFrame label="Draft · Step 1 of 2" status={s === 1 ? "Writing" : s === 2 ? "Ready to send" : "Ready"} dark>
+      <KitFrame label="Draft · Step 1 of 2" status={s === 1 ? "Writing" : s === 2 ? "Ready to send" : "Ready"}>
         <div className="space-y-3 p-4 text-[12px]">
           <div className="flex items-center gap-2">
             <img src="/avatars/a5.jpg" alt="" className="size-7 rounded-full object-cover" />
-            <div className="leading-tight"><div className="font-medium">Maya Chen</div><div className="text-[10px] text-white/50">maya.chen@hey.com · Loom</div></div>
-            <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[10px]"><Sparkles className="size-3 text-brand-400" />97% match</span>
+            <div className="leading-tight"><div className="font-medium">Maya Chen</div><div className="text-[10px] text-gray-500">maya.chen@hey.com · Loom</div></div>
+            <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-medium text-brand-700"><Sparkles className="size-3" />97% match</span>
           </div>
           <div className="flex flex-wrap gap-1.5">
             {["Design system", "B2B SaaS", "Figma"].map((t, i) => (
-              <span key={t} className={cn("rounded-md bg-white/[0.07] px-2 py-0.5 text-[10px] text-white/70 transition-opacity duration-500", s >= 1 ? "opacity-100" : "opacity-0")} style={{ transitionDelay: `${i * 150}ms` }}>{t}</span>
+              <span key={t} className={cn("rounded-md bg-gray-50 px-2 py-0.5 text-[10px] text-gray-600 ring-1 ring-black/[0.05] transition-opacity duration-500", s >= 1 ? "opacity-100" : "opacity-0")} style={{ transitionDelay: `${i * 150}ms` }}>{t}</span>
             ))}
           </div>
-          <div className="min-h-[92px] rounded-xl bg-white/[0.05] p-3 leading-relaxed text-white/85">
-            <span className="text-white">Hi <span className="rounded bg-brand-500/25 px-1 text-brand-200">Maya</span>,</span><br />
-            {body}<span className={cn("ml-0.5 inline-block h-3 w-px translate-y-0.5 bg-white", body.length === EMAIL.length ? "opacity-0" : "animate-pulse")} />
+          <div className="min-h-[92px] rounded-xl bg-gray-25 p-3 leading-relaxed text-gray-700 ring-1 ring-black/[0.04]">
+            <span className="text-foreground">Hi <span className="rounded bg-brand-50 px-1 text-brand-700">Maya</span>,</span><br />
+            {body}<span className={cn("ml-0.5 inline-block h-3 w-px translate-y-0.5 bg-foreground", body.length === EMAIL.length ? "opacity-0" : "animate-pulse")} />
           </div>
-          <div className="flex items-center justify-between text-[10px] text-white/45">
+          <div className="flex items-center justify-between text-[10px] text-gray-400">
             <span>Sends from alex@northwind.com</span>
-            <span className={cn("inline-flex h-7 items-center gap-1.5 rounded-full px-3 text-[11px] font-medium transition-colors", s === 2 ? "bg-white text-ink-900" : "bg-white/10 text-white/60")}><Send className="size-3" />Send</span>
+            <span className={cn("inline-flex h-7 items-center gap-1.5 rounded-full px-3 text-[11px] font-medium transition-colors", s === 2 ? "bg-ink-900 text-white" : "bg-gray-50 text-gray-500 ring-1 ring-black/[0.05]")}><Send className="size-3" />Send</span>
           </div>
         </div>
       </KitFrame>
@@ -338,20 +338,20 @@ export function ComposerKit({ className }: { className?: string }) {
 
 export function NotifyCard({ className }: { className?: string }) {
   return (
-    <div className={cn("w-[min(100%,360px)] rounded-2xl bg-ink-900/75 p-4 text-white shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 backdrop-blur-xl", className)}>
+    <div className={cn("w-[min(100%,360px)] rounded-2xl bg-white/85 p-4 text-foreground shadow-[0_24px_60px_-20px_rgba(16,24,40,0.45)] ring-1 ring-white backdrop-blur-xl backdrop-saturate-150", className)}>
       <div className="flex items-center gap-2 text-[10px]">
-        <span className="inline-flex items-center gap-1 rounded-full bg-brand-500/20 px-2 py-0.5 text-brand-200"><span className="size-1.5 rounded-full bg-brand-500" />Search finished</span>
-        <span className="rounded-full bg-white/10 px-2 py-0.5 text-white/70">4 min</span>
+        <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 font-medium text-brand-700"><span className="size-1.5 rounded-full bg-brand-500" />Search finished</span>
+        <span className="rounded-full bg-gray-50 px-2 py-0.5 text-gray-500 ring-1 ring-black/[0.05]">4 min</span>
       </div>
       <div className="mt-3 text-[14px] font-medium">41 strong matches for Senior Product Designer</div>
-      <p className="mt-1 text-[12px] leading-relaxed text-white/60">Lasso reviewed 260 profiles against your 6 criteria. 12 have shipped a design system.</p>
+      <p className="mt-1 text-[12px] leading-relaxed text-gray-500">Lasso reviewed 260 profiles against your 6 criteria. 12 have shipped a design system.</p>
       <div className="mt-3 flex items-center gap-2">
-        <div className="flex -space-x-2">{["a5", "a2", "a3", "a6"].map((a) => <img key={a} src={`/avatars/${a}.jpg`} alt="" className="size-6 rounded-full object-cover ring-2 ring-ink-900" />)}</div>
-        <span className="text-[11px] text-white/60">Maya, Daniel and 39 more</span>
+        <div className="flex -space-x-2">{["a5", "a2", "a3", "a6"].map((a) => <img key={a} src={`/avatars/${a}.jpg`} alt="" className="size-6 rounded-full object-cover ring-2 ring-white" />)}</div>
+        <span className="text-[11px] text-gray-500">Maya, Daniel and 39 more</span>
       </div>
       <div className="mt-4 flex gap-2">
-        <span className="inline-flex h-8 items-center rounded-full bg-white px-3.5 text-[12px] font-medium text-ink-900">Review matches</span>
-        <span className="inline-flex h-8 items-center rounded-full bg-white/10 px-3.5 text-[12px]">Save all</span>
+        <span className="inline-flex h-8 items-center rounded-full bg-ink-900 px-3.5 text-[12px] font-medium text-white">Review matches</span>
+        <span className="inline-flex h-8 items-center rounded-full bg-white px-3.5 text-[12px] ring-1 ring-black/[0.08]">Save all</span>
       </div>
     </div>
   );

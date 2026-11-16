@@ -50,10 +50,10 @@ export function FeatureTabs() {
       </div>
       <div className="relative overflow-hidden rounded-3xl">
         <img src="/images/valley.jpg" alt="" className="absolute inset-0 size-full object-cover" />
-        <div className="absolute inset-0 bg-ink-900/25" />
+        <div className="absolute inset-0 bg-ink-900/10" />
         <div className="relative px-5 py-10 sm:px-10 sm:py-14">
           <p className="mb-4 text-center text-[13px] font-medium text-white drop-shadow">{TABS[i].h}</p>
-          <div key={i} className="fx-pop mx-auto max-w-[460px]"><Kit dark /></div>
+          <div key={i} className="fx-pop mx-auto max-w-[460px]"><Kit /></div>
         </div>
       </div>
     </div>
