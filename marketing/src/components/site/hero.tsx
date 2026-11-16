@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Play } from "lucide-react";
 import { Beam, Roll } from "@/components/ui/fx";
+import { DashboardLive } from "@/components/site/dashboard-live";
 import { APP_URL } from "@/lib/site";
 
 /** Hero sign-up: work email field and the trial button in one pill. */
@@ -34,38 +35,51 @@ export function TourLink() {
   );
 }
 
-/**
- * The full product window under the hero copy. It starts tilted back in perspective
- * and straightens as the page scrolls, then fades into the section below.
- */
-export function HeroProduct() {
-  const ref = useRef<HTMLDivElement>(null);
+/** Scroll progress over the first `range` pixels of the page (0..1). */
+function useScrollProgress(range: number) {
   const [p, setP] = useState(0);
   useEffect(() => {
-    const on = () => {
-      const el = ref.current;
-      if (!el) return;
-      const top = el.getBoundingClientRect().top;
-      const vh = window.innerHeight;
-      setP(Math.min(Math.max((vh - top) / (vh * 0.9), 0), 1));
-    };
+    let raf = 0;
+    const on = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => setP(Math.min(Math.max(window.scrollY / range, 0), 1))); };
     on();
     window.addEventListener("scroll", on, { passive: true });
-    window.addEventListener("resize", on);
-    return () => { window.removeEventListener("scroll", on); window.removeEventListener("resize", on); };
-  }, []);
-  const ease = 1 - Math.pow(1 - p, 3);
+    return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
+  }, [range]);
+  return p;
+}
+
+/** Hero painting that slowly zooms in as the page scrolls (100% to 112%). */
+export function HeroBackdrop() {
+  const p = useScrollProgress(900);
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[1240px] px-4 [perspective:2000px] sm:px-8">
+    <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[82%] overflow-hidden [mask-image:linear-gradient(to_bottom,black_0%,black_50%,rgba(0,0,0,0.55)_72%,transparent_100%)]">
+      <img src="/images/hero.jpg" alt="" className="size-full origin-top object-cover object-[50%_62%] will-change-transform" style={{ transform: `scale(${1 + 0.12 * p})` }} />
+      <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
+    </div>
+  );
+}
+
+/**
+ * The full product window under the hero copy, with the live dashboard inside.
+ * It starts tilted back 16 degrees at 93% size and straightens to 104% over the
+ * first 600px of scroll, then scrolls with the page. Its bottom fades into the page.
+ */
+export function HeroProduct() {
+  const p = useScrollProgress(600);
+  const e = p * p * (3 - 2 * p);
+  return (
+    <div className="relative mx-auto w-full max-w-[1200px] px-4 [perspective:1600px] sm:px-8">
       <div
-        className="fx-rise is-in relative origin-top overflow-hidden rounded-[18px] bg-white/60 p-1.5 shadow-[0_40px_100px_-30px_rgba(16,24,40,0.55)] ring-1 ring-white/80 backdrop-blur-xl sm:rounded-[22px] sm:p-2"
-        style={{ transform: `rotateX(${(1 - ease) * 16}deg) scale(${0.94 + 0.06 * ease})`, ["--d" as string]: "1600ms" }}
+        className="relative origin-top overflow-hidden rounded-[18px] bg-white/60 p-1.5 shadow-[0_40px_100px_-30px_rgba(16,24,40,0.55)] ring-1 ring-white/80 backdrop-blur-xl will-change-transform sm:rounded-[22px] sm:p-2"
+        style={{ transform: `rotateX(${(1 - e) * 16}deg) scale(${0.93 + 0.11 * e})` }}
       >
         <div className="flex items-center gap-1.5 px-2 pb-2 pt-1 sm:px-3">
           <span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" /><span className="size-2.5 rounded-full bg-black/10" />
           <span className="mx-auto hidden rounded-md bg-white/70 px-3 py-0.5 text-[11px] text-gray-500 ring-1 ring-black/[0.04] sm:block">app.lasso.ai</span>
         </div>
-        <img src="/images/app-dashboard.jpg" alt="The Lasso dashboard: candidates sourced, pipeline activity, reply rate, top matches and open roles" className="block w-full rounded-[12px] ring-1 ring-black/[0.06] sm:rounded-[14px]" />
+        <div className="overflow-hidden rounded-[12px] ring-1 ring-black/[0.06] [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)] sm:rounded-[14px]">
+          <DashboardLive />
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { GhostCta, Header, PrimaryCta } from "@/components/site/chrome";
-import { HeroEmail, HeroProduct, TourLink } from "@/components/site/hero";
+import { HeroBackdrop, HeroEmail, HeroProduct, TourLink } from "@/components/site/hero";
 import { APP_URL } from "@/lib/site";
 import { FeatureTabs, Pricing } from "@/components/site/interactive";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
@@ -27,10 +27,7 @@ export default function Home() {
       <main>
         {/* ---------------------------------------------------------- Hero */}
         <section className="relative isolate overflow-hidden pb-14">
-          <div aria-hidden className="absolute inset-x-0 top-0 -z-20 h-[82%] overflow-hidden [mask-image:linear-gradient(to_bottom,black_0%,black_50%,rgba(0,0,0,0.55)_72%,transparent_100%)]">
-            <img src="/images/hero.jpg" alt="" className="size-full object-cover object-[50%_62%]" />
-            <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-white/75 via-white/35 to-transparent" />
-          </div>
+          <HeroBackdrop />
           <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center px-5 pt-36 text-center sm:pt-40">
             <FadeIn><Eyebrow>AI sourcing for talent teams</Eyebrow></FadeIn>
             <BlurText as="h1" text="Describe the hire. Lasso finds the people worth talking to." className="mt-5 text-[44px] leading-[1.02] sm:text-[68px] lg:text-[80px] [text-wrap:balance]" step={24} />
