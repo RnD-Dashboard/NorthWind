@@ -38,9 +38,9 @@ export default function Home() {
             </FadeIn>
           </div>
           <div className="mt-14"><HeroProduct /></div>
-          <div className="mx-auto mt-12 w-full max-w-[1240px] px-5">
+          <div className="mx-auto mt-20 w-full max-w-[1240px] px-5">
             <p className="text-center text-[13px] text-gray-500">Trusted by talent teams that hire every week</p>
-            <div className="relative mt-5 overflow-hidden [-webkit-mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+            <div className="relative mt-7 overflow-hidden [-webkit-mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
               <div className="fx-marquee items-center gap-12">
                 {[...LOGOS, ...LOGOS].map((l, i) => (
                   <img key={i} src={`/logos/${l}.svg`} alt={i < LOGOS.length ? l : ""} aria-hidden={i >= LOGOS.length} className="h-8 w-auto shrink-0 opacity-40 grayscale" />
