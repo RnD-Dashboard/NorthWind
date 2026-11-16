@@ -76,7 +76,7 @@ export default function Home() {
             </div>
             <FadeIn className="relative min-h-[460px] overflow-hidden rounded-3xl">
               <img src="/images/forest.jpg" alt="" className="absolute inset-0 size-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/15 to-transparent" />
               <div className="absolute inset-0 grid place-items-center p-5"><NotifyCard /></div>
             </FadeIn>
           </div>
