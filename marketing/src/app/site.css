@@ -71,8 +71,8 @@ h1, h2, .font-display {
   mask-image: linear-gradient(to bottom, #000 0%, #000 50%, rgb(0 0 0 / 0.55) 72%, transparent 100%);
 }
 .fade-footer {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.25) 14%, rgb(0 0 0 / 0.7) 32%, #000 55%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.25) 14%, rgb(0 0 0 / 0.7) 32%, #000 55%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.15) 15%, rgb(0 0 0 / 0.55) 33%, #000 58%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.15) 15%, rgb(0 0 0 / 0.55) 33%, #000 58%);
 }
 .fade-window {
   -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
