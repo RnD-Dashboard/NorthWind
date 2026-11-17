@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "@/components/site/motion";
 import {
   BadgeDollarSign, Briefcase, Clock, FolderKanban, Gauge, Layers, MailCheck, Repeat, Search, Share2, Sparkles, Users,
 } from "lucide-react";
@@ -32,11 +33,20 @@ const TABS = [
 ] as const;
 
 /** Use cases: serif tabs; each shows a short pitch with four points and a product window on a painting. */
+const DURATION = 8000;
+
 export function Audiences() {
   const [i, setI] = useState(0);
+  const [ref, inView] = useInView<HTMLDivElement>();
+  // Auto-advance once the section is on screen; a click restarts the timer on that tab.
+  useEffect(() => {
+    if (!inView) return;
+    const t = setTimeout(() => setI((x) => (x + 1) % TABS.length), DURATION);
+    return () => clearTimeout(t);
+  }, [i, inView]);
   return (
-    <div>
-      <div role="tablist" aria-label="Who it's for" className="mx-auto flex w-fit max-w-full overflow-x-auto border-b border-black/[0.08]">
+    <div ref={ref}>
+      <div role="tablist" aria-label="Who it's for" className="mx-auto flex w-fit max-w-full overflow-x-auto border-b border-black/[0.08] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {TABS.map((t, k) => (
           <button
             key={t.key}
@@ -46,7 +56,9 @@ export function Audiences() {
             className={cn("relative shrink-0 whitespace-nowrap px-4 pb-3 font-display text-[18px] transition-colors sm:px-7 sm:text-[22px]", k === i ? "text-foreground" : "text-gray-400 hover:text-gray-600")}
           >
             {t.key}
-            <span className={cn("absolute inset-x-0 -bottom-px h-px bg-foreground transition-opacity duration-300", k === i ? "opacity-100" : "opacity-0")} />
+            {k === i && (
+              <span key={`${i}-${inView}`} className="absolute bottom-0 left-0 h-[1.5px] bg-foreground" style={{ width: inView ? undefined : 0, animation: inView ? `fx-progress ${DURATION}ms linear forwards` : "none" }} />
+            )}
           </button>
         ))}
       </div>
@@ -56,7 +68,7 @@ export function Audiences() {
           const Kit = t.kit;
           const on = k === i;
           return (
-            <div key={t.key} role="tabpanel" aria-hidden={!on} className={cn("grid items-center gap-10 transition-all duration-500 lg:grid-cols-[1fr_1.1fr] lg:gap-14", on ? "relative translate-y-0 opacity-100" : "pointer-events-none absolute inset-0 translate-y-2 opacity-0")}>
+            <div key={t.key} role="tabpanel" aria-hidden={!on} className={cn("grid items-center gap-10 transition-[opacity,filter] duration-700 ease-out lg:grid-cols-[1fr_1.1fr] lg:gap-14", on ? "relative opacity-100 blur-0" : "pointer-events-none absolute inset-0 opacity-0 blur-md")}>
               <div>
                 <h3 className="font-display text-[28px] leading-tight">{t.title}</h3>
                 <p className="mt-3 max-w-[460px] text-[16px] leading-relaxed text-gray-500">{t.d}</p>
