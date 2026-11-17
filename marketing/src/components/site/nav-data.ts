@@ -18,7 +18,7 @@ export const MENU: NavGroup[] = [
   {
     label: "Solutions", preview: true, items: [
       { label: "Startups & in-house", text: "Hire without paying agency fees.", icon: Rocket, href: "/startups", preview: "startups", img: "/images/startups.jpg" },
-      { label: "Recruiting agencies", text: "Work many client roles at once.", icon: Building2, preview: "agencies", img: "/images/agencies.jpg" },
+      { label: "Recruiting agencies", text: "Work many client roles at once.", icon: Building2, href: "/agencies", preview: "agencies", img: "/images/agencies.jpg" },
     ],
   },
   {
