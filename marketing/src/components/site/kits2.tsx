@@ -285,3 +285,60 @@ export function ProfileKit({ className }: { className?: string }) {
     </div>
   );
 }
+
+/* ------------------------------------------------ Outreach: reply lands in your inbox */
+
+const INBOX_T = [1400, 1500, 3200];
+
+/** Inbox: a candidate's reply arrives, the sequence stops and the reply count goes up. */
+export function ReplyKit({ className }: { className?: string }) {
+  const [ref, inView] = useInView<HTMLDivElement>();
+  const s = useTimeline(INBOX_T, inView);
+  const replies = useCount(s >= 1 ? 22 : 21, inView, 500);
+  const status = ["Waiting", "New reply", "Sequence stopped"][s];
+  const older = [
+    { n: "Daniel Reyes", a: "/avatars/a2.jpg", t: "Re: Senior designer at Northwind", p: "Thanks for reaching out, I'm open to…", d: "Mon" },
+    { n: "Amara Okafor", a: "/avatars/a9.jpg", t: "Re: Product design lead role", p: "Could you share more about the team?", d: "Sun" },
+  ];
+  return (
+    <div ref={ref} className={className}>
+      <KitFrame label="Inbox · your Gmail" status={status}>
+        <div className="bg-gray-25 p-3.5">
+          <div className="space-y-2">
+            {s >= 1 && (
+              <div className="fx-pop rounded-xl bg-white px-3 py-2.5 ring-1 ring-brand-500/30">
+                <div className="flex items-center gap-2.5">
+                  <img src="/avatars/a5.jpg" alt="" className="size-7 shrink-0 rounded-full object-cover" />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2"><span className="text-[12px] font-semibold">Maya Chen</span><span className="text-[10px] text-brand-600">Just now</span></div>
+                    <div className="truncate text-[11px] font-medium">Re: Design lead at Northwind</div>
+                  </div>
+                </div>
+                <p className="mt-2 text-[11.5px] leading-snug text-gray-600">Hi Alex, thanks for the note. Happy to chat on Thursday, does 2pm work?</p>
+                <div className="mt-2 flex items-center gap-1.5">
+                  <span className={cn("inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] transition-colors", s >= 2 ? "bg-brand-50 text-brand-600" : "bg-gray-100 text-gray-500")}>
+                    <Check className="size-2.5" strokeWidth={3} />{s >= 2 ? "Sequence stopped" : "Replied"}
+                  </span>
+                </div>
+              </div>
+            )}
+            {older.map((m) => (
+              <div key={m.n} className="flex items-center gap-2.5 rounded-xl bg-white px-3 py-2.5 ring-1 ring-black/[0.05]">
+                <img src={m.a} alt="" className="size-7 shrink-0 rounded-full object-cover" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2"><span className="text-[12px] font-medium">{m.n}</span><span className="text-[10px] text-gray-400">{m.d}</span></div>
+                  <div className="truncate text-[11px] text-gray-500">{m.t} · {m.p}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 grid grid-cols-3 divide-x divide-black/[0.06] rounded-xl bg-white py-2.5 text-center ring-1 ring-black/[0.05]">
+            {[["120", "Sent"], ["64%", "Opened"], [`${replies}`, "Replied"]].map(([v, l]) => (
+              <div key={l}><div className="text-[14px] font-medium tabular-nums">{v}</div><div className={cn(mono, "text-[9px] text-gray-400")}>{l}</div></div>
+            ))}
+          </div>
+        </div>
+      </KitFrame>
+    </div>
+  );
+}
