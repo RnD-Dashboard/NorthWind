@@ -209,21 +209,6 @@ export default function Home() {
         </Shell>
         <Band />
 
-        {/* ------------------------------------------------- Testimonials */}
-        <Shell>
-          <div className="p-6 sm:p-10 lg:p-14">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <Eyebrow>Customer stories</Eyebrow>
-                <BlurText text="Trusted by teams that hire every week" className="mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
-              </div>
-              <a href="#contact" className="fx-btn inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-gray-700 hover:text-foreground">Read all stories<ArrowRight className="size-3.5" /></a>
-            </div>
-            <div className="mt-10"><Testimonials /></div>
-          </div>
-        </Shell>
-        <Band />
-
         {/* ------------------------------------------------------- Trust */}
         <Shell>
           <div className="p-6 sm:p-10 lg:p-14">
@@ -244,6 +229,53 @@ export default function Home() {
                   </FadeIn>
                 );
               })}
+            </div>
+          </div>
+        </Shell>
+        <Band />
+
+        {/* ------------------------------------------------- Testimonials */}
+        <Shell>
+          <div className="p-6 sm:p-10 lg:p-14">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <Eyebrow>Customer stories</Eyebrow>
+                <BlurText text="Trusted by teams that hire every week" className="mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
+              </div>
+              <a href="#contact" className="fx-btn inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-gray-700 hover:text-foreground">Read all stories<ArrowRight className="size-3.5" /></a>
+            </div>
+            <div className="mt-10"><Testimonials /></div>
+          </div>
+        </Shell>
+        <Band />
+
+        {/* ---------------------------------------------------------- Blog */}
+        <Shell id="blog">
+          <div className="p-6 sm:p-10 lg:p-14">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <Eyebrow>From the blog</Eyebrow>
+                <BlurText text="Guides for teams that hire on their own" className="mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
+              </div>
+              <a href="#blog" className="fx-btn inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-gray-700 hover:text-foreground">View all articles<ArrowRight className="size-3.5" /></a>
+            </div>
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {[
+                { img: "/images/forest.jpg", tag: "Sourcing", t: "How to write a hiring brief an AI can actually use", d: "Five things to put in every brief so your shortlist starts strong.", m: "6 min read" },
+                { img: "/images/hills.jpg", tag: "Outreach", t: "The follow-up sequence that tripled our reply rate", d: "Timing, tone and the one line that gets candidates to answer.", m: "5 min read" },
+                { img: "/images/meadow.jpg", tag: "Hiring", t: "Hiring your first designer without an agency", d: "A step-by-step plan for founders running their own search.", m: "8 min read" },
+              ].map((p, k) => (
+                <FadeIn key={p.t} delay={k * 90}>
+                  <a href="#blog" className="group block overflow-hidden rounded-2xl ring-1 ring-black/[0.06] transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(16,24,40,0.3)]">
+                    <div className="relative h-48 overflow-hidden"><img src={p.img} alt="" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 text-[12px] text-gray-500"><span className="rounded-full bg-gray-50 px-2 py-0.5 ring-1 ring-black/[0.05]">{p.tag}</span>{p.m}</div>
+                      <div className="mt-3 font-display text-[20px] leading-snug">{p.t}</div>
+                      <p className="mt-2 text-[13px] leading-relaxed text-gray-500">{p.d}</p>
+                    </div>
+                  </a>
+                </FadeIn>
+              ))}
             </div>
           </div>
         </Shell>
