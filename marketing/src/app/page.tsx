@@ -202,12 +202,9 @@ export default function Home() {
         {/* ------------------------------------------------- Testimonials */}
         <Shell>
           <div className="p-6 sm:p-10 lg:p-14">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <Eyebrow>Customer stories</Eyebrow>
-                <BlurText text="Trusted by teams that hire every week" className="mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
-              </div>
-              <a href="#contact" className="fx-btn inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-gray-700 hover:text-foreground">Read all stories<ArrowRight className="size-3.5" /></a>
+            <div className="text-center">
+              <Eyebrow>Customer stories</Eyebrow>
+              <BlurText text="Trusted by teams that hire every week" className="mx-auto mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
             </div>
             <div className="mt-10"><Testimonials /></div>
           </div>
