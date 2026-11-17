@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck,
 } from "lucide-react";
-import { GhostCta, Header, PrimaryCta } from "@/components/site/chrome";
+import { Header, PrimaryCta } from "@/components/site/chrome";
 import { HeroBackdrop, HeroEmail, HeroProduct, TourLink } from "@/components/site/hero";
 import { APP_URL } from "@/lib/site";
 import { Pricing } from "@/components/site/interactive";
@@ -284,10 +284,10 @@ export default function Home() {
         <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[50%] bg-gradient-to-b from-white via-white/60 to-transparent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/30 to-transparent" />
         <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:px-14 lg:pt-32">
-          <div className="grid gap-12 xl:grid-cols-[1.45fr_1fr]">
+          <div className="grid gap-12 xl:grid-cols-[1.45fr_1fr] xl:gap-24">
             <div>
-              <BlurText text={"Stop searching for candidates. \n Start talking to them."} className="text-[36px] leading-[1.08] tracking-[-0.03em] sm:text-[44px] xl:text-[50px]" />
-              <FadeIn delay={300} className="mt-8 flex flex-wrap gap-2"><PrimaryCta>Start free trial</PrimaryCta><GhostCta href="mailto:hello@lasso.ai">Book a demo</GhostCta></FadeIn>
+              <BlurText text={"Stop searching for candidates. \n Start talking to them."} className="text-[36px] leading-[1.08] tracking-[-0.03em] sm:text-[44px] xl:text-[46px]" />
+              <FadeIn delay={300} className="mt-8"><PrimaryCta>Start free trial</PrimaryCta></FadeIn>
             </div>
             {/* Every link goes to a section on this page or to the app; no extra pages needed. */}
             <div className="grid grid-cols-3 gap-4 text-[13px] sm:gap-6 xl:max-w-none">
