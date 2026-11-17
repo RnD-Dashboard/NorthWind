@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { ChatKit, SequenceKit } from "@/components/site/kit";
+import { ChatKit, SequenceKit, StillContext } from "@/components/site/kit";
 import { CollectionKit, OpenRolesKit, ShareKit } from "@/components/site/kits2";
 import { MENU, PRICING, type NavGroup, type NavItem } from "@/components/site/nav-data";
 import { cn } from "@/lib/utils";
@@ -47,9 +47,10 @@ function Panel({ group, onPick }: { group: NavGroup; onPick: () => void }) {
       {group.preview && Kit && (
         <div className="relative min-h-[280px] flex-1 overflow-hidden rounded-xl">
           {group.items.map((it) => <img key={it.label} src={it.img} alt="" className={cn("absolute inset-0 size-full object-cover transition-opacity duration-500", it === item ? "opacity-100" : "opacity-0")} />)}
-          <div className="absolute inset-0 grid place-items-center">
-            <div key={item.label} className="fx-pop w-[440px] origin-center scale-[0.78]"><Kit className="w-full" /></div>
-          </div>
+          {/* A still product window tucked into the corner, cut off by the right and bottom edges. */}
+          <StillContext.Provider value={true}>
+            <div key={item.label} className="kit-still absolute left-7 top-7 w-[440px]"><Kit className="w-full" /></div>
+          </StillContext.Provider>
         </div>
       )}
     </div>

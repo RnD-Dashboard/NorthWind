@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import {
   ArrowUp, Briefcase, Check, CircleCheck, Clock, FolderPlus, Mail, MapPin, MessageSquareReply, Paperclip, Send, Sparkles, Star, UserRound,
 } from "lucide-react";
@@ -11,21 +11,27 @@ import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ helpers */
 
+/** Inside this context kits show their finished state with no animation (used in the nav menu previews). */
+export const StillContext = createContext(false);
+
 /** Steps through a looping timeline while `active`; returns the current step index. */
 export function useTimeline(durations: number[], active: boolean) {
+  const still = useContext(StillContext);
+  const run = active && !still;
   const [i, setI] = useState(0);
   const key = durations.join(",");
   useEffect(() => {
-    if (!active) return;
+    if (!run) return;
     const d = key.split(",").map(Number);
     const t = setTimeout(() => setI((n) => (n + 1) % d.length), d[i]);
     return () => clearTimeout(t);
-  }, [i, active, key]);
-  return i;
+  }, [i, run, key]);
+  return still ? durations.length - 1 : i;
 }
 
 /** Types `text` out while `on`; resets when `on` turns false. */
 function useTyped(text: string, on: boolean, speed = 34) {
+  const still = useContext(StillContext);
   const [n, setN] = useState(0);
   useEffect(() => {
     if (!on) { const r = setTimeout(() => setN(0), 0); return () => clearTimeout(r); }
@@ -33,11 +39,12 @@ function useTyped(text: string, on: boolean, speed = 34) {
     const t = setTimeout(() => setN((x) => x + 1), speed);
     return () => clearTimeout(t);
   }, [n, on, text, speed]);
-  return text.slice(0, n);
+  return still ? (on ? text : "") : text.slice(0, n);
 }
 
 /** Counts from 0 to `to` while `on`. */
 export function useCount(to: number, on: boolean, ms = 900) {
+  const still = useContext(StillContext);
   const [v, setV] = useState(0);
   useEffect(() => {
     if (!on) { const r = setTimeout(() => setV(0), 0); return () => clearTimeout(r); }
@@ -46,7 +53,7 @@ export function useCount(to: number, on: boolean, ms = 900) {
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [to, on, ms]);
-  return v;
+  return still ? to : v;
 }
 
 export const mono = "font-mono text-[10px] uppercase tracking-[0.08em]";
