@@ -42,6 +42,8 @@ export function BlurText({
   let i = 0;
   const words = text.split(" ");
   const children = words.map((w, wi) => {
+    // "\n" in the text forces a line break on larger screens.
+    if (w === "\n") return <Fragment key={wi}>{" "}<br className="max-sm:hidden" /></Fragment>;
     const isMuted = muted.includes(w.replace(/[.,]/g, ""));
     const inner =
       by === "word"
@@ -53,11 +55,11 @@ export function BlurText({
     return (
       <Fragment key={wi}>
         <span className={cn("inline-block whitespace-nowrap", isMuted && "text-gray-400")}>{inner}</span>
-        {wi < words.length - 1 && " "}
+        {wi < words.length - 1 && words[wi + 1] !== "\n" && " "}
       </Fragment>
     );
   });
-  return createElement(as, { ref, className: cn(className, inView && "is-in"), "aria-label": text }, <span aria-hidden>{children}</span>);
+  return createElement(as, { ref, className: cn(className, inView && "is-in"), "aria-label": text.replace(/\s*\n\s*/g, " ") }, <span aria-hidden>{children}</span>);
 }
 
 /** Simple rise + fade when the block scrolls into view. */
