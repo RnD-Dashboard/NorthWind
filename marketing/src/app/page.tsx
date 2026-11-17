@@ -205,13 +205,10 @@ export default function Home() {
             <div className="flex min-w-0 flex-col">
               <Eyebrow>You stay in control</Eyebrow>
               <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
-              {/* Example trust marks; swap for real certifications once they are in place. */}
-              <div className="mt-10 flex flex-wrap gap-3 lg:mt-auto lg:pt-16">
-                {["Google OAuth", "Encrypted", "No resale"].map((b, k) => (
-                  <FadeIn key={b} delay={k * 90}>
-                    <span className="grid size-[84px] place-items-center rounded-full bg-gradient-to-b from-gray-100 to-gray-200 p-[5px] shadow-[0_10px_24px_-14px_rgba(16,24,40,0.45)]">
-                      <span className="grid size-full place-items-center rounded-full bg-gradient-to-b from-ink-700 to-ink-900 px-2 text-center text-[11px] font-medium leading-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">{b}</span>
-                    </span>
+              <div className="mt-10 flex flex-wrap items-center gap-6 lg:mt-auto lg:pt-16">
+                {[["/badges/soc.png", "AICPA SOC"], ["/badges/iso-27001.png", "ISO 27001 certified"], ["/badges/gdpr.png", "GDPR"]].map(([src, alt], k) => (
+                  <FadeIn key={src} delay={k * 90}>
+                    <img src={src} alt={alt} width={84} height={84} className="size-[84px] object-contain" />
                   </FadeIn>
                 ))}
               </div>
