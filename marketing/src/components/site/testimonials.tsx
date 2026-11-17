@@ -1,92 +1,73 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/** Example quotes for the design; swap in real customer quotes before launch. */
-const ITEMS = [
-  { q: "We filled two senior design roles from our first search.", n: "Maya Chen", r: "Head of Talent, Fernway", a: "/avatars/a5.jpg", m: "2", l: "roles filled in a month", tone: "from-[#d9c9b6] via-[#c9b49c] to-[#ad9479]" },
-  { q: "Sourcing used to take my whole Monday. Now it's done before coffee.", n: "Daniel Reyes", r: "Recruiter, Brightline", a: "/avatars/a2.jpg", m: "6h", l: "saved every week", tone: "from-[#b9c9e2] via-[#a2b6d6] to-[#7f97c0]" },
-  { q: "The match scores mean I stop second-guessing the shortlist.", n: "Amara Okafor", r: "Talent Partner, Halcyon", a: "/avatars/a9.jpg", m: "92%", l: "shortlist accuracy", tone: "from-[#f1c9ab] via-[#e3a985] to-[#c98159]" },
-  { q: "Follow-ups send themselves, and replies land right in my inbox.", n: "Kenji Tanaka", r: "Founder, Quietriver", a: "/avatars/a8.jpg", m: "3x", l: "more replies", tone: "from-[#e8b9c7] via-[#d99bae] to-[#bf7690]" },
-  { q: "We stopped paying agency fees for engineering hires.", n: "Layla Hassan", r: "COO, Atlas & Co", a: "/avatars/a7.jpg", m: "$48k", l: "saved on agency fees", tone: "from-[#d6c9b9] via-[#c5b4a0] to-[#a8957f]" },
-  { q: "Our whole team works from one shared list per role now.", n: "Jonas Weber", r: "People Ops, Northwind", a: "/avatars/a6.jpg", m: "1", l: "shared view per role", tone: "from-[#c3c8cd] via-[#adb3ba] to-[#8d949c]" },
-  { q: "I describe the person once and Lasso does the digging.", n: "Grace Murphy", r: "Hiring Manager, Codecraft", a: "/avatars/a11.jpg", m: "4 min", l: "to a scored shortlist", tone: "from-[#b5cdbd] via-[#9cbaa6] to-[#7a9c86]" },
+/** Example stories for the design; swap in real customer quotes before launch. */
+const STORIES = [
+  { logo: "/logos/boltshift.svg", company: "Boltshift", q: "We filled two senior design roles from our first search. Lasso found people our job posts never reached.", n: "Maya Chen", r: "Head of Talent", a: "/avatars/a5.jpg", m: 83, unit: "%", l: "Less time sourcing" },
+  { logo: "/logos/capsule.svg", company: "Capsule", q: "Sourcing used to take my whole Monday. Now I review a scored shortlist before my first coffee.", n: "Daniel Reyes", r: "Senior Recruiter", a: "/avatars/a2.jpg", m: 6, unit: "h", l: "Saved every week" },
+  { logo: "/logos/galileo.svg", company: "Galileo", q: "Follow-ups send themselves from my own inbox, and the replies land right where I already work.", n: "Amara Okafor", r: "Talent Partner", a: "/avatars/a9.jpg", m: 3, unit: "x", l: "More replies" },
 ];
 
-/** Card sizes follow the container: wider cards on desktop, compact on phones. */
-function useSizes() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [w, setW] = useState(1200);
+/** Counts up to `to` each time `run` turns true. */
+function useCount(to: number, run: boolean) {
+  const [v, setV] = useState(0);
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([e]) => setW(e.contentRect.width));
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-  const small = w < 640;
-  return { ref, small, card: small ? 150 : 210, open: small ? Math.min(w - 64, 320) : 500, gap: small ? 12 : 24, h: small ? 380 : 430 };
+    if (!run) return;
+    let raf = 0; const t0 = performance.now();
+    const tick = (t: number) => { const p = Math.min((t - t0) / 900, 1); setV(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) raf = requestAnimationFrame(tick); };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [to, run]);
+  return v;
 }
 
-/**
- * Testimonial carousel: soft gradient cards in a row; the centred card opens up to show
- * the person's photo. Advances on its own, pauses on hover, and any card can be clicked.
- */
-export function Testimonials() {
-  const [i, setI] = useState(2);
-  const [paused, setPaused] = useState(false);
-  const { ref, small, card, open, gap, h } = useSizes();
-  useEffect(() => {
-    if (paused) return;
-    const t = setTimeout(() => setI((x) => (x + 1) % ITEMS.length), 4500);
-    return () => clearTimeout(t);
-  }, [i, paused]);
-  const offset = i * (card + gap) + open / 2;
-
+function Story({ s, open, onOpen }: { s: (typeof STORIES)[number]; open: boolean; onOpen: () => void }) {
+  const v = useCount(s.m, open);
   return (
-    <div ref={ref} className="relative overflow-hidden py-4" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} style={{ height: h + 40 }}>
-      <div className="absolute left-1/2 top-4 flex items-center transition-transform duration-700 ease-[cubic-bezier(.2,.8,.2,1)]" style={{ gap, transform: `translateX(${-offset}px)` }}>
-        {ITEMS.map((t, k) => {
-          const on = k === i;
-          return (
-            <button
-              key={t.n}
-              type="button"
-              onClick={() => setI(k)}
-              aria-label={`${t.n}: ${t.q}`}
-              aria-pressed={on}
-              className={cn("grain relative flex shrink-0 overflow-hidden rounded-[28px] bg-gradient-to-b text-left text-white transition-all duration-700 ease-[cubic-bezier(.2,.8,.2,1)]", t.tone, on ? "shadow-[0_30px_60px_-30px_rgba(16,24,40,0.45)]" : "opacity-60 hover:opacity-80")}
-              style={{ width: on ? open : card, height: on ? h : h - 28 }}
-            >
-              {/* Photo panel on the open card */}
-              <span className={cn("relative h-full shrink-0 overflow-hidden rounded-[24px] transition-all duration-700", on && !small ? "m-1.5 w-[44%] opacity-100" : "m-0 w-0 opacity-0")}>
-                <img src={t.a} alt="" className="absolute inset-0 size-full object-cover" />
-                <span className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
-                <span className="absolute bottom-4 left-4 leading-tight">
-                  <span className="block text-[16px] font-medium">{t.n}</span>
-                  <span className="block text-[13px] text-white/80">{t.r}</span>
-                </span>
-              </span>
+    <div
+      onMouseEnter={onOpen}
+      onClick={onOpen}
+      className={cn(
+        "relative flex min-h-[340px] cursor-pointer flex-col overflow-hidden rounded-xl bg-white p-6 ring-1 ring-black/[0.06] transition-[flex-grow,box-shadow] duration-500 ease-[cubic-bezier(.2,.8,.2,1)] max-md:min-h-0",
+        open ? "flex-[4] shadow-[0_18px_40px_-24px_rgba(16,24,40,0.25)]" : "flex-[1] hover:bg-gray-25",
+      )}
+    >
+      <img src={s.logo} alt={s.company} className={cn("h-7 w-auto self-start transition-all duration-500", open ? "opacity-100" : "opacity-40 grayscale")} />
 
-              <span className="relative flex min-w-0 flex-1 flex-col items-center px-5 pb-5 pt-8 text-center">
-                <span className={cn("font-display leading-none text-white/90", on ? "text-[44px]" : "text-[32px]")}>&rdquo;</span>
-                <span className={cn("mt-2 [text-wrap:balance] text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.12)]", on ? "text-[22px] leading-[1.45]" : "text-[15px] leading-snug")}>&ldquo;{t.q}&rdquo;</span>
-                {on && small && (
-                  <span className="mt-4 flex items-center gap-2 text-[12px]"><img src={t.a} alt="" className="size-7 rounded-full object-cover ring-2 ring-white/60" /><span className="text-left leading-tight"><span className="block font-medium">{t.n}</span><span className="block text-white/80">{t.r}</span></span></span>
-                )}
-                <span className="mt-auto self-end text-right leading-tight">
-                  <span className={cn("block font-display text-white", on ? "text-[48px]" : "text-[32px]")}>{t.m}</span>
-                  <span className={cn("block text-white/80", on ? "text-[13px]" : "text-[11px]")}>{t.l}</span>
-                </span>
-              </span>
-            </button>
-          );
-        })}
+      {/* Open state */}
+      <div className={cn("mt-auto transition-all duration-500 max-md:mt-5", open ? "translate-y-0 opacity-100 delay-150" : "pointer-events-none absolute inset-x-6 bottom-6 translate-y-3 opacity-0 max-md:hidden")}>
+        <img src={s.a} alt="" className="h-[72px] w-[100px] rounded-lg object-cover object-[50%_25%]" />
+        <div className="mt-5 flex items-end justify-between gap-6 max-sm:flex-col max-sm:items-start">
+          <div className="max-w-[440px]">
+            <p className="text-[16px] leading-relaxed text-foreground">&ldquo;{s.q}&rdquo;</p>
+            <div className="mt-3 text-[13px] font-medium">{s.n}</div>
+            <div className="text-[12px] text-gray-500">{s.r}, {s.company}</div>
+          </div>
+          <div className="shrink-0 border-l border-black/[0.08] pl-4 max-sm:border-l-0 max-sm:pl-0">
+            <div className="text-[22px] font-medium tabular-nums tracking-[-0.02em]">{v}{s.unit}</div>
+            <div className="text-[12px] text-gray-500">{s.l}</div>
+          </div>
+        </div>
       </div>
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-white to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-[12%] bg-gradient-to-l from-white to-transparent" />
+
+      {/* Closed state */}
+      <span className={cn("mt-auto grid size-8 place-items-center rounded-lg bg-gray-50 text-gray-500 transition-opacity duration-300", open ? "pointer-events-none absolute bottom-6 left-6 opacity-0" : "opacity-100 max-md:hidden")}>
+        <Plus className="size-4" />
+      </span>
+    </div>
+  );
+}
+
+/** Customer stories: an accordion of white cards; hover or tap a card to open it. */
+export function Testimonials() {
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="flex gap-2 max-md:flex-col">
+      {STORIES.map((s, i) => <Story key={s.company} s={s} open={i === open} onOpen={() => setOpen(i)} />)}
     </div>
   );
 }

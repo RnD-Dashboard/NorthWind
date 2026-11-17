@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import {
-  Building2, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck, Users,
+  ArrowRight, Building2, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck, Users,
 } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { GhostCta, Header, PrimaryCta } from "@/components/site/chrome";
@@ -210,14 +210,18 @@ export default function Home() {
         <Band />
 
         {/* ------------------------------------------------- Testimonials */}
-        <section className="overflow-hidden bg-white py-20 sm:py-24">
-          <div className="mx-auto max-w-[720px] px-5 text-center">
-            <span className="inline-flex rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.08em] text-gray-500 ring-1 ring-black/[0.08]">Testimonials</span>
-            <BlurText text="What hiring teams are saying" className="mt-4 text-[32px] leading-[1.1] sm:text-[44px]" />
-            <p className="mt-3 text-[16px] text-gray-500 sm:text-[17px]">Teams that hire every week, finding the right people in a fraction of the time.</p>
+        <Shell>
+          <div className="p-6 sm:p-10 lg:p-14">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <Eyebrow>Customer stories</Eyebrow>
+                <BlurText text="Trusted by teams that hire every week" className="mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
+              </div>
+              <a href="#contact" className="fx-btn inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-gray-700 hover:text-foreground">Read all stories<ArrowRight className="size-3.5" /></a>
+            </div>
+            <div className="mt-10"><Testimonials /></div>
           </div>
-          <div className="mt-12"><Testimonials /></div>
-        </section>
+        </Shell>
         <Band />
 
         {/* ------------------------------------------------------- Trust */}
