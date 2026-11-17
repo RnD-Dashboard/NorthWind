@@ -11,7 +11,7 @@ export const MENU: NavGroup[] = [
   {
     label: "Product", preview: true, items: [
       { label: "AI Sourcing", text: "Describe the hire, get a scored shortlist.", icon: Sparkles, href: "/sourcing", preview: "sourcing", img: "/images/valley.jpg" },
-      { label: "Library", text: "Every shortlisted candidate in one place.", icon: FolderKanban, preview: "library", img: "/images/hills.jpg" },
+      { label: "Library", text: "Every shortlisted candidate in one place.", icon: FolderKanban, href: "/library", preview: "library", img: "/images/hills.jpg" },
       { label: "Outreach", text: "Follow-ups sent from your own Gmail.", icon: Send, preview: "outreach", img: "/images/lake.jpg" },
     ],
   },
