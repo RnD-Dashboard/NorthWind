@@ -201,10 +201,22 @@ export default function Home() {
 
         {/* ------------------------------------------------------- Trust */}
         <Shell>
-          <div className="p-6 sm:p-10 lg:p-14">
-            <Eyebrow>You stay in control</Eyebrow>
-            <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[560px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
-            <div className="mt-10 grid overflow-hidden rounded-2xl ring-1 ring-black/[0.06] md:grid-cols-3">
+          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:p-14">
+            <div className="flex min-w-0 flex-col">
+              <Eyebrow>You stay in control</Eyebrow>
+              <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
+              {/* Example trust marks; swap for real certifications once they are in place. */}
+              <div className="mt-10 flex flex-wrap gap-3 lg:mt-auto lg:pt-16">
+                {["Google OAuth", "Encrypted", "No resale"].map((b, k) => (
+                  <FadeIn key={b} delay={k * 90}>
+                    <span className="grid size-[84px] place-items-center rounded-full bg-gradient-to-b from-gray-100 to-gray-200 p-[5px] shadow-[0_10px_24px_-14px_rgba(16,24,40,0.45)]">
+                      <span className="grid size-full place-items-center rounded-full bg-gradient-to-b from-ink-700 to-ink-900 px-2 text-center text-[11px] font-medium leading-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">{b}</span>
+                    </span>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+            <div className="grid min-w-0 border border-black/[0.08] md:grid-cols-3">
               {[
                 [UserCheck, "You approve every message", "Nothing goes out until you've read it. Edit any draft before it sends."],
                 [Sparkles, "Every score is explained", "See which criteria each person meets, so you can trust the shortlist."],
@@ -212,10 +224,12 @@ export default function Home() {
               ].map(([I, t, d], k) => {
                 const Icon = I as typeof Lock;
                 return (
-                  <FadeIn key={t as string} delay={k * 90} className="border-b border-black/[0.06] p-6 md:border-b-0 md:border-r md:last:border-r-0">
-                    <span className="grid size-9 place-items-center rounded-xl bg-ink-900 text-white"><Icon className="size-4" /></span>
-                    <div className="mt-5 text-[15px] font-medium">{t as string}</div>
-                    <p className="mt-2 text-[13px] leading-relaxed text-gray-500">{d as string}</p>
+                  <FadeIn key={t as string} delay={k * 90} className="flex flex-col border-b border-black/[0.08] p-6 last:border-b-0 md:min-h-[320px] md:border-b-0 md:border-r md:last:border-r-0">
+                    <Icon className="size-7 text-foreground" strokeWidth={1.5} />
+                    <div className="mt-10 md:mt-auto">
+                      <h3 className="font-display text-[24px] leading-[1.15] md:min-h-[2.3em]">{t as string}</h3>
+                      <p className="mt-3 text-[14px] leading-relaxed text-gray-500 md:min-h-[6.5em]">{d as string}</p>
+                    </div>
                   </FadeIn>
                 );
               })}
