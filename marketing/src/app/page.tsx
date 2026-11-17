@@ -7,7 +7,8 @@ import { Logo } from "@/components/brand/logo";
 import { GhostCta, Header, PrimaryCta } from "@/components/site/chrome";
 import { HeroBackdrop, HeroEmail, HeroProduct, TourLink } from "@/components/site/hero";
 import { APP_URL } from "@/lib/site";
-import { FeatureTabs, Pricing } from "@/components/site/interactive";
+import { Pricing } from "@/components/site/interactive";
+import { FeatureStack } from "@/components/site/features";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 
@@ -147,9 +148,7 @@ export default function Home() {
         {/* ------------------------------------------- Features (dark) */}
         <section className="bg-ink-900 text-white">
           <div className="mx-auto max-w-[1240px] border-x border-white/[0.08] p-6 sm:p-10 lg:p-14">
-            <Eyebrow light>Features</Eyebrow>
-            <BlurText text="Everything a search needs, in one place" className="mb-10 mt-4 max-w-[520px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
-            <FeatureTabs />
+            <FeatureStack />
           </div>
         </section>
 
