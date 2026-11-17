@@ -152,6 +152,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ----------------------------------------------------- Pricing */}
+        <Shell id="pricing">
+          <div className="p-6 sm:p-10 lg:p-14">
+            <Eyebrow>Pricing</Eyebrow>
+            <BlurText text="Start free. Upgrade when you're hiring more." className="mb-8 mt-4 max-w-[560px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
+            <Pricing />
+          </div>
+        </Shell>
+        <Band />
+
         {/* ---------------------------------------- Outreach with context */}
         <Shell>
           <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
@@ -219,16 +229,6 @@ export default function Home() {
                 );
               })}
             </div>
-          </div>
-        </Shell>
-        <Band />
-
-        {/* ----------------------------------------------------- Pricing */}
-        <Shell id="pricing">
-          <div className="p-6 sm:p-10 lg:p-14">
-            <Eyebrow>Pricing</Eyebrow>
-            <BlurText text="Start free. Upgrade when you're hiring more." className="mb-8 mt-4 max-w-[560px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
-            <Pricing />
           </div>
         </Shell>
       </main>
