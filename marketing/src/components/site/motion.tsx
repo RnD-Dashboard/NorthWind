@@ -1,6 +1,6 @@
 "use client";
 
-import { createElement, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { createElement, Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /** True once the element has scrolled into view (stays true). */
@@ -49,11 +49,12 @@ export function BlurText({
         : Array.from(w).map((ch, ci) => (
             <span key={ci} className="fx-blur" style={{ "--d": `${delay + i++ * step}ms` } as CSSProperties}>{ch}</span>
           ));
+    // Real spaces between words, so headings can balance their lines (no orphans).
     return (
-      <span key={wi} className={cn("inline-block whitespace-nowrap", isMuted && "text-gray-400")}>
-        {inner}
-        {wi < words.length - 1 && <span className="inline-block">&nbsp;</span>}
-      </span>
+      <Fragment key={wi}>
+        <span className={cn("inline-block whitespace-nowrap", isMuted && "text-gray-400")}>{inner}</span>
+        {wi < words.length - 1 && " "}
+      </Fragment>
     );
   });
   return createElement(as, { ref, className: cn(className, inView && "is-in"), "aria-label": text }, <span aria-hidden>{children}</span>);

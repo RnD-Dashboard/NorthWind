@@ -201,11 +201,11 @@ export default function Home() {
 
         {/* ------------------------------------------------------- Trust */}
         <Shell>
-          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:p-14">
+          <div className="grid gap-10 p-6 sm:p-10 lg:p-14 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
             <div className="flex min-w-0 flex-col">
               <Eyebrow>You stay in control</Eyebrow>
               <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
-              <div className="mt-10 flex flex-wrap items-center gap-6 lg:mt-auto lg:pt-16">
+              <div className="mt-10 flex flex-wrap items-center gap-6 xl:mt-auto xl:pt-16">
                 {[["/badges/soc-2.png", "AICPA SOC 2"], ["/badges/iso-27001.png", "ISO 27001 certified"], ["/badges/gdpr.png", "GDPR"]].map(([src, alt], k) => (
                   <FadeIn key={src} delay={k * 90}>
                     <img src={src} alt={alt} width={84} height={84} className="size-[84px] object-contain" />

@@ -5,6 +5,10 @@ h1, h2, .font-display {
   letter-spacing: -0.022em;
 }
 
+/* No orphans: headings balance their lines; body text avoids a lone last word. */
+h1, h2, h3, h4, .font-display { text-wrap: balance; }
+p, li, blockquote { text-wrap: pretty; }
+
 /* Marketing motion: headline blur reveal, block rise, kit animations. Uses the design-system tokens only. */
 
 .fx-blur {
