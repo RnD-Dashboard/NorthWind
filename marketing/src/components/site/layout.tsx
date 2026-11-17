@@ -24,7 +24,7 @@ export function PageHero({ eyebrow, title, sub, img = "/images/hero.jpg", childr
     <section className="relative isolate overflow-hidden">
       <div aria-hidden className="absolute inset-0 -z-20 fade-hero">
         <img src={img} alt="" className="size-full object-cover object-[50%_62%]" />
-        <div className="absolute inset-x-0 top-0 h-[70%] bg-gradient-to-b from-white/80 via-white/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/55 to-white/20" />
       </div>
       <div className="mx-auto flex max-w-[860px] flex-col items-center px-5 pb-20 pt-36 text-center sm:pb-24 sm:pt-40">
         <FadeIn><Eyebrow>{eyebrow}</Eyebrow></FadeIn>
@@ -39,7 +39,7 @@ export function PageHero({ eyebrow, title, sub, img = "/images/hero.jpg", childr
 const FOOTER_LINKS: [string, [string, string][]][] = [
   ["Product", [["Overview", "/#product"], ["How it works", "/#how"], ["Pricing", "/pricing"]]],
   ["Resources", [["Who it's for", "/#solutions"], ["Customer stories", "/#stories"], ["Blog", "/#blog"]]],
-  ["Get started", [["Start free trial", `${APP_URL}/signup`], ["Sign in", `${APP_URL}/login`], ["Book a demo", "mailto:hello@lasso.ai"]]],
+  ["Get started", [["Start free trial", `${APP_URL}/signup`], ["Sign in", `${APP_URL}/login`], ["Book a demo", "/contact"]]],
 ];
 
 /** Final call to action and footer over the meadow painting. */

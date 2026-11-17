@@ -38,7 +38,7 @@ export function Pricing() {
               </div>
               <div className={cn("relative mt-2 text-[12px]", p.hot ? "text-white/60" : "text-gray-400")}>{p.m > 0 ? `${p.note} ${yearly ? "yearly" : "monthly"}` : p.note}</div>
               <div className="relative mt-6">
-                <PrimaryCta href={p.m < 0 ? "mailto:hello@lasso.ai" : `${APP_URL}/signup`} beam={!!p.hot} light={p.hot} className="w-full justify-between">{p.cta}</PrimaryCta>
+                <PrimaryCta href={p.m < 0 ? "/contact" : `${APP_URL}/signup`} beam={!!p.hot} light={p.hot} className="w-full justify-between">{p.cta}</PrimaryCta>
               </div>
               <ul className={cn("relative mt-6 space-y-2.5 border-t pt-5 text-[13px]", p.hot ? "border-white/15" : "border-black/[0.06]")}>
                 {p.feats.map((f) => (
