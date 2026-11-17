@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { ChatKit, PipelineKit, SequenceKit } from "@/components/site/kit";
 import { BlurText, Eyebrow } from "@/components/site/motion";
 import { cn } from "@/lib/utils";
 
 const FEATURES = [
-  { n: "1.0", t: "AI sourcing", img: "/images/valley.jpg", kit: ChatKit, title: "Describe the person. Get a scored shortlist.", d: "Write the brief the way you'd say it. Lasso turns it into criteria and explains every match." },
+  { n: "1.0", t: "AI sourcing", href: "/sourcing", img: "/images/valley.jpg", kit: ChatKit, title: "Describe the person. Get a scored shortlist.", d: "Write the brief the way you'd say it. Lasso turns it into criteria and explains every match." },
   { n: "1.1", t: "Library & pipeline", img: "/images/hero.jpg", kit: PipelineKit, title: "Every shortlisted candidate in one view.", d: "Collections per role, status at a glance and a live pipeline your whole team works from." },
   { n: "1.2", t: "Outreach", img: "/images/lake.jpg", kit: SequenceKit, title: "Follow-ups that send themselves.", d: "Sequences from your own Gmail that stop the moment someone replies." },
 ];
@@ -57,7 +59,10 @@ export function FeatureStack() {
               </div>
               <div className="mt-5 grid gap-3 sm:grid-cols-[1.1fr_1fr] sm:gap-8">
                 <h3 className="font-display text-[24px] leading-[1.15] text-white">{f.title}</h3>
-                <p className="text-[14px] leading-relaxed text-white/50">{f.d}</p>
+                <div>
+                  <p className="text-[14px] leading-relaxed text-white/50">{f.d}</p>
+                  {"href" in f && f.href && <Link href={f.href} className="mt-3 inline-flex items-center gap-1 text-[13px] text-white/85 hover:text-white">Learn more<ArrowRight className="size-3.5" /></Link>}
+                </div>
               </div>
             </div>
           );

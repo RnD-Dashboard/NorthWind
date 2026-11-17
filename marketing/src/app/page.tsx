@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import {
   ArrowRight, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck,
 } from "lucide-react";
@@ -152,6 +153,7 @@ export default function Home() {
             <div className="text-center"><Eyebrow>Pricing</Eyebrow></div>
             <BlurText text="Start free. Upgrade when you're hiring more." className="mx-auto mb-8 mt-4 max-w-[560px] text-center text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px] [text-wrap:balance]" />
             <Pricing />
+            <div className="mt-8 text-center"><Link href="/pricing" className="inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-gray-700 hover:text-foreground">Compare all plans<ArrowRight className="size-3.5" /></Link></div>
           </div>
         </Shell>
         <Band />

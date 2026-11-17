@@ -5,6 +5,7 @@ import { Plus } from "lucide-react";
 import { PrimaryCta } from "@/components/site/chrome";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 import { APP_URL } from "@/lib/site";
+import { MENU, PRICING } from "@/components/site/nav-data";
 
 /* Shared page pieces. The home page is the style guide; every page is built from these. */
 
@@ -96,10 +97,12 @@ export function HeroCtas() {
   );
 }
 
-const FOOTER_LINKS: [string, [string, string][]][] = [
-  ["Product", [["AI Sourcing", "/sourcing"], ["How it works", "/#how"], ["Pricing", "/pricing"]]],
-  ["Resources", [["Who it's for", "/#solutions"], ["Customer stories", "/#stories"], ["Blog", "/#blog"]]],
-  ["Get started", [["Start free trial", `${APP_URL}/signup`], ["Sign in", `${APP_URL}/login`], ["Book a demo", "/contact"]]],
+/** Footer columns come from the same list as the header menus. Pages not built yet show "Soon". */
+const FOOTER: [string, { label: string; href?: string }[]][] = [
+  ["Product", [...MENU[0].items, PRICING]],
+  ["Solutions", MENU[1].items],
+  ["Resources", [...MENU[2].items.filter((x) => x.label !== "Book a demo"), { label: "Contact", href: "/contact" }]],
+  ["Get started", [{ label: "Start free trial", href: `${APP_URL}/signup` }, { label: "Sign in", href: `${APP_URL}/login` }, { label: "Book a demo", href: "/contact" }]],
 ];
 
 /** Final call to action and footer over the meadow painting. */
@@ -115,11 +118,19 @@ export function SiteFooter() {
             <BlurText text={"Stop searching. \n Start talking."} className="text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[52px]" />
             <FadeIn delay={300} className="mt-8"><PrimaryCta>Start free trial</PrimaryCta></FadeIn>
           </div>
-          <div className="grid grid-cols-3 gap-4 text-[13px] sm:gap-10">
-            {FOOTER_LINKS.map(([h, links]) => (
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 text-[13px] sm:grid-cols-4 sm:gap-8">
+            {FOOTER.map(([h, links]) => (
               <div key={h}>
                 <div className="text-gray-500">{h}</div>
-                <ul className="mt-3 space-y-2">{links.map(([l, href]) => <li key={l}><Link href={href} className="whitespace-nowrap text-gray-900 hover:underline">{l}</Link></li>)}</ul>
+                <ul className="mt-3 space-y-2">
+                  {links.map((l) => (
+                    <li key={l.label}>
+                      {l.href
+                        ? <Link href={l.href} className="whitespace-nowrap text-gray-900 hover:underline">{l.label}</Link>
+                        : <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-gray-400">{l.label}<span className="rounded-full bg-white/70 px-1.5 text-[9.5px] uppercase tracking-[0.04em]">Soon</span></span>}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
