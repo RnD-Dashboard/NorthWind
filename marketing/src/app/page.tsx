@@ -1,25 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import {
   ArrowRight, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck,
 } from "lucide-react";
-import { Header, PrimaryCta } from "@/components/site/chrome";
+import { Header } from "@/components/site/chrome";
 import { HeroBackdrop, HeroEmail, HeroProduct, TourLink } from "@/components/site/hero";
-import { APP_URL } from "@/lib/site";
 import { Pricing } from "@/components/site/interactive";
 import { FeatureStack } from "@/components/site/features";
 import { Testimonials } from "@/components/site/testimonials";
 import { Audiences } from "@/components/site/audiences";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
+import { Band, Shell, SiteFooter } from "@/components/site/layout";
 
 const LOGOS = ["boltshift", "capsule", "catalog", "cloudwatch", "codecraft", "coreos", "cubekit", "featherdev", "galileo", "hexsmith", "interlock", "layers", "lightbox", "quotient"];
-
-/** Centered page column with the thin vertical rules the layout is built on. */
-function Shell({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
-  return <div id={id} className={`mx-auto max-w-[1360px] scroll-mt-16 border-x border-black/[0.06] bg-white ${className}`}>{children}</div>;
-}
-const Band = () => <div className="mx-auto max-w-[1360px] border-x border-black/[0.06]"><div className="band" /></div>;
 
 export default function Home() {
   return (
@@ -278,34 +271,7 @@ export default function Home() {
         </Shell>
       </main>
 
-      {/* ------------------------------------------- Final CTA + footer */}
-      <footer id="contact" className="relative isolate overflow-hidden">
-        <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%] fade-footer" />
-        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[50%] bg-gradient-to-b from-white via-white/60 to-transparent" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/30 to-transparent" />
-        <div className="mx-auto max-w-[1360px] px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:px-10 lg:pt-32">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-24">
-            <div>
-              <BlurText text={"Stop searching. \n Start talking."} className="text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[52px]" />
-              <FadeIn delay={300} className="mt-8"><PrimaryCta>Start free trial</PrimaryCta></FadeIn>
-            </div>
-            {/* Every link goes to a section on this page or to the app; no extra pages needed. */}
-            <div className="grid grid-cols-3 gap-4 text-[13px] sm:gap-10">
-              {[
-                ["Product", [["Overview", "#product"], ["How it works", "#how"], ["Pricing", "#pricing"]]],
-                ["Resources", [["Who it's for", "#solutions"], ["Customer stories", "#stories"], ["Blog", "#blog"]]],
-                ["Get started", [["Start free trial", `${APP_URL}/signup`], ["Sign in", `${APP_URL}/login`], ["Book a demo", "mailto:hello@lasso.ai"]]],
-              ].map(([h, links]) => (
-                <div key={h as string}>
-                  <div className="text-gray-500">{h as string}</div>
-                  <ul className="mt-3 space-y-2">{(links as string[][]).map(([l, href]) => <li key={l}><Link href={href} className="whitespace-nowrap text-gray-900 hover:underline">{l}</Link></li>)}</ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="mt-[22vh] text-center text-[15px] text-white/90 sm:text-[17px]">© 2026 Lasso. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

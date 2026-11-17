@@ -11,10 +11,10 @@ import { APP_URL } from "@/lib/site";
 export { APP_URL };
 
 const NAV = [
-  { label: "Product", href: "#product" },
-  { label: "How it works", href: "#how" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Product", href: "/#product" },
+  { label: "How it works", href: "/#how" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 /** Primary call to action: dark pill with the arrow tile, border beam and text roll. */
