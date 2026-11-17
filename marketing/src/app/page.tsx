@@ -17,9 +17,9 @@ const LOGOS = ["boltshift", "capsule", "catalog", "cloudwatch", "codecraft", "co
 
 /** Centered page column with the thin vertical rules the layout is built on. */
 function Shell({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
-  return <div id={id} className={`mx-auto max-w-[1240px] scroll-mt-16 border-x border-black/[0.06] bg-white ${className}`}>{children}</div>;
+  return <div id={id} className={`mx-auto max-w-[1360px] scroll-mt-16 border-x border-black/[0.06] bg-white ${className}`}>{children}</div>;
 }
-const Band = () => <div className="mx-auto max-w-[1240px] border-x border-black/[0.06]"><div className="band" /></div>;
+const Band = () => <div className="mx-auto max-w-[1360px] border-x border-black/[0.06]"><div className="band" /></div>;
 
 export default function Home() {
   return (
@@ -40,7 +40,7 @@ export default function Home() {
             </FadeIn>
           </div>
           <div className="mt-14"><HeroProduct /></div>
-          <div className="mx-auto mt-20 w-full max-w-[1240px] px-5">
+          <div className="mx-auto mt-20 w-full max-w-[1360px] px-5 lg:px-10">
             <p className="text-center text-[13px] text-gray-500">Trusted by talent teams that hire every week</p>
             <div className="relative mt-7 overflow-hidden [-webkit-mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)] [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
               <div className="fx-marquee items-center gap-12">
@@ -54,7 +54,7 @@ export default function Home() {
 
         {/* ------------------------------------------------------- Problem */}
         <Shell id="product">
-          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14 lg:pb-24">
+          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:px-10 lg:py-14 lg:pb-24">
             <div className="flex flex-col">
               <Eyebrow>Sourcing is slow by default</Eyebrow>
               <BlurText text="The right people are out there. Finding them takes all week." className="mt-4 max-w-[480px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" muted={["Finding", "them", "takes", "all", "week"]} />
@@ -75,11 +75,11 @@ export default function Home() {
 
         {/* --------------------------------------------- Wide product band */}
         <Shell>
-          <div className="px-6 pb-6 sm:px-10 sm:pb-10 lg:px-14 lg:pb-14">
+          <div className="px-6 pb-6 sm:px-10 sm:pb-10 lg:px-10 lg:pb-14">
             <FadeIn className="relative overflow-hidden rounded-3xl">
               <img src="/images/hills.jpg" alt="" className="absolute inset-0 size-full object-cover object-[50%_60%]" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-900/15" />
-              <div className="relative grid items-center gap-6 p-5 sm:p-10 md:grid-cols-2 lg:p-14">
+              <div className="relative grid items-center gap-6 p-5 sm:p-10 md:grid-cols-2 lg:px-10 lg:py-14">
                 <CriteriaCard />
                 <MatchKit />
               </div>
@@ -90,7 +90,7 @@ export default function Home() {
 
         {/* --------------------------------------------- Meet your sourcer */}
         <Shell>
-          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
+          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:px-10 lg:py-14">
             <div>
               <Eyebrow>Meet your AI sourcer</Eyebrow>
               <BlurText text="One brief in. A shortlist you can act on, out." className="mt-4 max-w-[480px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
@@ -125,7 +125,7 @@ export default function Home() {
 
         {/* --------------------------------------------------- How it works */}
         <Shell id="how">
-          <div className="p-6 sm:p-10 lg:p-14">
+          <div className="p-6 sm:p-10 lg:px-10 lg:py-14">
             <Eyebrow>How it works</Eyebrow>
             <BlurText text="From brief to booked call in four steps" className="mt-4 max-w-[560px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
             <div className="mt-10 grid overflow-hidden rounded-2xl ring-1 ring-black/[0.06] sm:grid-cols-2 lg:grid-cols-4">
@@ -148,14 +148,14 @@ export default function Home() {
 
         {/* ------------------------------------------- Features (dark) */}
         <section className="bg-ink-900 text-white">
-          <div className="mx-auto max-w-[1240px] border-x border-white/[0.08] p-6 sm:p-10 lg:p-14">
+          <div className="mx-auto max-w-[1360px] border-x border-white/[0.08] p-6 sm:p-10 lg:px-10 lg:py-14">
             <FeatureStack />
           </div>
         </section>
 
         {/* ----------------------------------------------------- Pricing */}
         <Shell id="pricing">
-          <div className="p-6 sm:p-10 lg:p-14">
+          <div className="p-6 sm:p-10 lg:px-10 lg:py-14">
             <div className="text-center"><Eyebrow>Pricing</Eyebrow></div>
             <BlurText text="Start free. Upgrade when you're hiring more." className="mx-auto mb-8 mt-4 max-w-[560px] text-center text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px] [text-wrap:balance]" />
             <Pricing />
@@ -165,7 +165,7 @@ export default function Home() {
 
         {/* ---------------------------------------- Outreach with context */}
         <Shell>
-          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
+          <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:px-10 lg:py-14">
             <div>
               <Eyebrow>Outreach with context</Eyebrow>
               <BlurText text="Write to every candidate like you read their whole profile" className="mt-4 max-w-[500px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
@@ -187,7 +187,7 @@ export default function Home() {
 
         {/* -------------------------------------------------- Who it's for */}
         <Shell id="solutions">
-          <div className="p-6 sm:p-10 lg:p-14">
+          <div className="p-6 sm:p-10 lg:px-10 lg:py-14">
             <div className="mx-auto max-w-[640px] text-center">
               <span className="inline-flex rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.08em] text-gray-500 ring-1 ring-black/[0.08]">Who it&apos;s for</span>
               <BlurText text="Built for every team that hires" className="mt-4 text-[32px] leading-[1.1] sm:text-[44px]" />
@@ -200,7 +200,7 @@ export default function Home() {
 
         {/* ------------------------------------------------- Testimonials */}
         <Shell id="stories">
-          <div className="p-6 sm:p-10 lg:p-14">
+          <div className="p-6 sm:p-10 lg:px-10 lg:py-14">
             <div className="text-center">
               <Eyebrow>Customer stories</Eyebrow>
               <BlurText text="Trusted by teams that hire every week" className="mx-auto mt-4 max-w-[520px] text-[32px] leading-[1.1] sm:text-[40px]" />
@@ -212,7 +212,7 @@ export default function Home() {
 
         {/* ---------------------------------------------------------- Blog */}
         <Shell id="blog">
-          <div className="p-6 sm:p-10 lg:p-14">
+          <div className="p-6 sm:p-10 lg:px-10 lg:py-14">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <Eyebrow>From the blog</Eyebrow>
@@ -244,7 +244,7 @@ export default function Home() {
 
         {/* ------------------------------------------------------- Trust */}
         <Shell>
-          <div className="grid gap-10 p-6 sm:p-10 lg:p-14 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
+          <div className="grid gap-10 p-6 sm:p-10 lg:px-10 lg:py-14 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
             <div className="flex min-w-0 flex-col">
               <Eyebrow>You stay in control</Eyebrow>
               <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
@@ -283,7 +283,7 @@ export default function Home() {
         <img src="/images/footer.jpg" alt="" className="absolute inset-0 -z-20 size-full object-cover object-[50%_70%] fade-footer" />
         <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[50%] bg-gradient-to-b from-white via-white/60 to-transparent" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/4 bg-gradient-to-t from-ink-900/30 to-transparent" />
-        <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:px-14 lg:pt-32">
+        <div className="mx-auto max-w-[1360px] px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:px-10 lg:pt-32">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-24">
             <div>
               <BlurText text={"Stop searching. \n Start talking."} className="text-[40px] leading-[1.05] tracking-[-0.03em] sm:text-[52px]" />

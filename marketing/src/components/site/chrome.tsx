@@ -46,7 +46,7 @@ export function Header() {
   }, []);
   return (
     <header className={cn("fixed inset-x-0 top-0 z-50 transition-all duration-300", scrolled ? "fx-glass-bar border-b border-black/[0.05]" : "bg-transparent")}>
-      <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5">
+      <div className="mx-auto flex h-16 max-w-[1360px] items-center justify-between px-5 lg:px-10">
         <Link href="/" aria-label="Lasso home"><Logo /></Link>
         <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((n) => (
