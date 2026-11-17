@@ -135,7 +135,10 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <p className="mt-[22vh] text-center text-[15px] text-white/90 sm:text-[17px]">© 2026 Lasso. All rights reserved.</p>
+        <div className="mt-[22vh] flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[15px] text-white/90 sm:text-[17px]">
+          <span>© 2026 Lasso. All rights reserved.</span>
+          <span className="flex gap-4 text-[13px] sm:text-[14px]"><Link href="/legal#privacy" className="hover:underline">Privacy</Link><Link href="/legal#terms" className="hover:underline">Terms</Link></span>
+        </div>
       </div>
     </footer>
   );
