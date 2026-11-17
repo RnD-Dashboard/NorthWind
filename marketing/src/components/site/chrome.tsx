@@ -11,7 +11,7 @@ import { APP_URL } from "@/lib/site";
 export { APP_URL };
 
 const NAV = [
-  { label: "Product", href: "/#product" },
+  { label: "Product", href: "/sourcing" },
   { label: "How it works", href: "/#how" },
   { label: "Solutions", href: "/#solutions" },
   { label: "Pricing", href: "/pricing" },

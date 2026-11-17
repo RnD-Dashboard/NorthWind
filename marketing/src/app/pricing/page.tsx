@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Check, Minus, Plus } from "lucide-react";
+import { Check, Minus } from "lucide-react";
 import { Header } from "@/components/site/chrome";
 import { Pricing } from "@/components/site/interactive";
-import { Band, PageHero, Shell, SiteFooter, pad } from "@/components/site/layout";
+import { Band, Faq, PageHero, Shell, SiteFooter, pad } from "@/components/site/layout";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ const ROWS: [string, (string | boolean)[]][] = [
 ];
 
 /** Draft answers; check against the final billing rules before launch. */
-const FAQ = [
+const FAQ: [string, string][] = [
   ["What counts as a search?", "Each new brief you send Lasso is one search. Refining it by chatting, filtering or sorting the results doesn't use another one."],
   ["What is an email lookup?", "Finding one candidate's work email uses one lookup. If Lasso can't find an email, it isn't counted."],
   ["What happens when my trial ends?", "Pick a plan to keep going. Your searches, collections and sequences stay saved either way."],
@@ -80,26 +80,7 @@ export default function PricingPage() {
         <Band />
 
         {/* --------------------------------------------------------- FAQ */}
-        <Shell>
-          <div className={`${pad} grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14`}>
-            <div>
-              <Eyebrow>FAQ</Eyebrow>
-              <BlurText text="Questions, answered" className="mt-4 text-[32px] leading-[1.1] sm:text-[40px]" />
-              <p className="mt-4 max-w-[340px] text-[15px] leading-relaxed text-gray-500">Something else on your mind? Email us at <a href="mailto:hello@lasso.ai" className="text-foreground underline underline-offset-2">hello@lasso.ai</a>.</p>
-            </div>
-            <div className="border-t border-black/[0.08]">
-              {FAQ.map(([q, a]) => (
-                <details key={q} className="group border-b border-black/[0.08]">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-[16px] [&::-webkit-details-marker]:hidden">
-                    {q}
-                    <Plus className="size-4 shrink-0 text-gray-500 transition-transform duration-300 group-open:rotate-45" />
-                  </summary>
-                  <p className="-mt-1 pb-5 pr-8 text-[15px] leading-relaxed text-gray-500">{a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </Shell>
+        <Shell><Faq items={FAQ} /></Shell>
       </main>
       <SiteFooter />
     </>

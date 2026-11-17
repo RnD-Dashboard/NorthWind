@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Plus } from "lucide-react";
 import { PrimaryCta } from "@/components/site/chrome";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 import { APP_URL } from "@/lib/site";
@@ -36,8 +37,67 @@ export function PageHero({ eyebrow, title, sub, img = "/images/hero.jpg", childr
   );
 }
 
+/** Text on one side, a product window on a painting on the other. `flip` puts the window on the left. */
+export function FeatureRow({ eyebrow, title, text, points, img, flip, children }: { eyebrow: string; title: string; text: string; points?: string[]; img: string; flip?: boolean; children: ReactNode }) {
+  return (
+    <div className={`${pad} grid items-center gap-10 lg:grid-cols-2 lg:gap-14`}>
+      <div className={flip ? "lg:order-2" : ""}>
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <BlurText text={title} className="mt-4 max-w-[460px] text-[32px] leading-[1.1] sm:text-[40px]" />
+        <p className="mt-4 max-w-[440px] text-[16px] leading-relaxed text-gray-500">{text}</p>
+        {points && (
+          <ul className="mt-8 space-y-3">
+            {points.map((x, k) => (
+              <FadeIn key={x} delay={k * 80}><li className="flex items-center gap-3 text-[15px] text-gray-700"><span className="size-1.5 rounded-[2px] bg-brand-500" />{x}</li></FadeIn>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div className="relative overflow-hidden rounded-[28px]">
+        <img src={img} alt="" className="absolute inset-0 size-full object-cover" />
+        <div className="absolute inset-0 bg-white/10" />
+        <div className="relative grid min-h-[400px] place-items-center px-5 py-10 sm:px-10">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+/** Heading on the left, questions that open and close on the right. */
+export function Faq({ items, title = "Questions, answered" }: { items: [string, string][]; title?: string }) {
+  return (
+    <div className={`${pad} grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14`}>
+      <div>
+        <Eyebrow>FAQ</Eyebrow>
+        <BlurText text={title} className="mt-4 text-[32px] leading-[1.1] sm:text-[40px]" />
+        <p className="mt-4 max-w-[340px] text-[15px] leading-relaxed text-gray-500">Something else on your mind? Email us at <a href="mailto:hello@lasso.ai" className="text-foreground underline underline-offset-2">hello@lasso.ai</a>.</p>
+      </div>
+      <div className="border-t border-black/[0.08]">
+        {items.map(([q, a]) => (
+          <details key={q} className="group border-b border-black/[0.08]">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-[16px] [&::-webkit-details-marker]:hidden">
+              {q}
+              <Plus className="size-4 shrink-0 text-gray-500 transition-transform duration-300 group-open:rotate-45" />
+            </summary>
+            <p className="-mt-1 pb-5 pr-8 text-[15px] leading-relaxed text-gray-500">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Two buttons under a page hero: start a trial, or book a demo. */
+export function HeroCtas() {
+  return (
+    <FadeIn delay={900} className="mt-8 flex flex-wrap justify-center gap-2">
+      <PrimaryCta>Start free trial</PrimaryCta>
+      <Link href="/contact" className="fx-btn inline-flex h-11 items-center rounded-full bg-white/70 px-5 text-[14px] font-medium ring-1 ring-black/[0.06] backdrop-blur hover:bg-white">Book a demo</Link>
+    </FadeIn>
+  );
+}
+
 const FOOTER_LINKS: [string, [string, string][]][] = [
-  ["Product", [["Overview", "/#product"], ["How it works", "/#how"], ["Pricing", "/pricing"]]],
+  ["Product", [["AI Sourcing", "/sourcing"], ["How it works", "/#how"], ["Pricing", "/pricing"]]],
   ["Resources", [["Who it's for", "/#solutions"], ["Customer stories", "/#stories"], ["Blog", "/#blog"]]],
   ["Get started", [["Start free trial", `${APP_URL}/signup`], ["Sign in", `${APP_URL}/login`], ["Book a demo", "/contact"]]],
 ];
