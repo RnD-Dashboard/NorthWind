@@ -199,42 +199,6 @@ export default function Home() {
         </Shell>
         <Band />
 
-        {/* ------------------------------------------------------- Trust */}
-        <Shell>
-          <div className="grid gap-10 p-6 sm:p-10 lg:p-14 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
-            <div className="flex min-w-0 flex-col">
-              <Eyebrow>You stay in control</Eyebrow>
-              <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
-              <div className="mt-10 flex flex-wrap items-center gap-6 xl:mt-auto xl:pt-16">
-                {[["/badges/soc-2.png", "AICPA SOC 2"], ["/badges/iso-27001.png", "ISO 27001 certified"], ["/badges/gdpr.png", "GDPR"]].map(([src, alt], k) => (
-                  <FadeIn key={src} delay={k * 90}>
-                    <img src={src} alt={alt} width={84} height={84} className="size-[84px] object-contain" />
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-            <div className="grid min-w-0 border border-black/[0.08] md:grid-cols-3">
-              {[
-                [UserCheck, "You approve every message", "Nothing goes out until you've read it. Edit any draft before it sends."],
-                [Sparkles, "Every score is explained", "See which criteria each person meets, so you can trust the shortlist."],
-                [ShieldCheck, "Your data stays yours", "Emails send from your own Gmail. Candidate data is never sold or shared."],
-              ].map(([I, t, d], k) => {
-                const Icon = I as typeof Lock;
-                return (
-                  <FadeIn key={t as string} delay={k * 90} className="flex flex-col border-b border-black/[0.08] p-6 last:border-b-0 md:min-h-[320px] md:border-b-0 md:border-r md:last:border-r-0">
-                    <Icon className="size-7 text-foreground" strokeWidth={1.5} />
-                    <div className="mt-10 md:mt-auto">
-                      <h3 className="font-display text-[24px] leading-[1.15] md:min-h-[2.3em]">{t as string}</h3>
-                      <p className="mt-3 text-[14px] leading-relaxed text-gray-500 md:min-h-[6.5em]">{d as string}</p>
-                    </div>
-                  </FadeIn>
-                );
-              })}
-            </div>
-          </div>
-        </Shell>
-        <Band />
-
         {/* ------------------------------------------------- Testimonials */}
         <Shell>
           <div className="p-6 sm:p-10 lg:p-14">
@@ -277,6 +241,42 @@ export default function Home() {
                   </a>
                 </FadeIn>
               ))}
+            </div>
+          </div>
+        </Shell>
+        <Band />
+
+        {/* ------------------------------------------------------- Trust */}
+        <Shell>
+          <div className="grid gap-10 p-6 sm:p-10 lg:p-14 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
+            <div className="flex min-w-0 flex-col">
+              <Eyebrow>You stay in control</Eyebrow>
+              <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
+              <div className="mt-10 flex flex-wrap items-center gap-6 xl:mt-auto xl:pt-16">
+                {[["/badges/soc-2.png", "AICPA SOC 2"], ["/badges/iso-27001.png", "ISO 27001 certified"], ["/badges/gdpr.png", "GDPR"]].map(([src, alt], k) => (
+                  <FadeIn key={src} delay={k * 90}>
+                    <img src={src} alt={alt} width={84} height={84} className="size-[84px] object-contain" />
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+            <div className="grid min-w-0 border border-black/[0.08] md:grid-cols-3">
+              {[
+                [UserCheck, "You approve every message", "Nothing goes out until you've read it. Edit any draft before it sends."],
+                [Sparkles, "Every score is explained", "See which criteria each person meets, so you can trust the shortlist."],
+                [ShieldCheck, "Your data stays yours", "Emails send from your own Gmail. Candidate data is never sold or shared."],
+              ].map(([I, t, d], k) => {
+                const Icon = I as typeof Lock;
+                return (
+                  <FadeIn key={t as string} delay={k * 90} className="flex flex-col border-b border-black/[0.08] p-6 last:border-b-0 md:min-h-[320px] md:border-b-0 md:border-r md:last:border-r-0">
+                    <Icon className="size-7 text-foreground" strokeWidth={1.5} />
+                    <div className="mt-10 md:mt-auto">
+                      <h3 className="font-display text-[24px] leading-[1.15] md:min-h-[2.3em]">{t as string}</h3>
+                      <p className="mt-3 text-[14px] leading-relaxed text-gray-500 md:min-h-[6.5em]">{d as string}</p>
+                    </div>
+                  </FadeIn>
+                );
+              })}
             </div>
           </div>
         </Shell>
