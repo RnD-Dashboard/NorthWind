@@ -24,7 +24,7 @@ export const MENU: NavGroup[] = [
   {
     label: "Resources", items: [
       { label: "Customer stories", text: "How teams hire with Lasso.", icon: Quote, href: "/#stories" },
-      { label: "Blog", text: "Guides for teams that hire on their own.", icon: BookOpen, href: "/#blog" },
+      { label: "Blog", text: "Guides for teams that hire on their own.", icon: BookOpen, href: "/blog" },
       { label: "Book a demo", text: "See Lasso on one of your roles.", icon: CalendarClock, href: "/contact" },
     ],
   },
