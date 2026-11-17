@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import {
-  ArrowRight, Building2, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck, Users,
+  ArrowRight, FolderKanban, Gauge, Inbox, Lock, MailSearch, MessageSquareText, ShieldCheck, Sparkles, Target, UserCheck,
 } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { GhostCta, Header, PrimaryCta } from "@/components/site/chrome";
@@ -10,6 +10,7 @@ import { APP_URL } from "@/lib/site";
 import { Pricing } from "@/components/site/interactive";
 import { FeatureStack } from "@/components/site/features";
 import { Testimonials } from "@/components/site/testimonials";
+import { Audiences } from "@/components/site/audiences";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 
@@ -188,23 +189,12 @@ export default function Home() {
         {/* -------------------------------------------------- Who it's for */}
         <Shell id="solutions">
           <div className="p-6 sm:p-10 lg:p-14">
-            <Eyebrow>Who it&apos;s for</Eyebrow>
-            <BlurText text="Built for teams that hire without a big recruiting department" className="mt-4 max-w-[620px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {[
-                { i: Building2, t: "Startups & in-house teams", d: "Run searches yourself instead of paying agency fees. No setup: describe the role and start reviewing people today.", img: "/images/startups.jpg" },
-                { i: Users, t: "Recruiting agencies", d: "One collection per client role, reusable talent pools and shortlists you can share. Spend your time closing, not searching.", img: "/images/agencies.jpg" },
-              ].map((c, k) => (
-                <FadeIn key={c.t} delay={k * 100} className="group relative overflow-hidden rounded-3xl ring-1 ring-black/[0.06]">
-                  <div className="relative h-48 overflow-hidden"><img src={c.img} alt="" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
-                  <div className="p-6">
-                    <c.i className="size-4 text-gray-500" />
-                    <div className="mt-3 text-[18px] font-medium tracking-[-0.01em]">{c.t}</div>
-                    <p className="mt-2 text-[14px] leading-relaxed text-gray-500">{c.d}</p>
-                  </div>
-                </FadeIn>
-              ))}
+            <div className="mx-auto max-w-[640px] text-center">
+              <span className="inline-flex rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.08em] text-gray-500 ring-1 ring-black/[0.08]">Who it&apos;s for</span>
+              <BlurText text="Built for every team that hires" className="mt-4 text-[32px] leading-[1.1] sm:text-[44px]" />
+              <p className="mt-3 text-[16px] leading-relaxed text-gray-500 sm:text-[17px]">Lasso adapts to how you hire, whether you&apos;re a founder, a talent team, an agency or a hiring manager.</p>
             </div>
+            <div className="mt-12"><Audiences /></div>
           </div>
         </Shell>
         <Band />
