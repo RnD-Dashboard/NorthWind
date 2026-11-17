@@ -155,8 +155,8 @@ export default function Home() {
         {/* ----------------------------------------------------- Pricing */}
         <Shell id="pricing">
           <div className="p-6 sm:p-10 lg:p-14">
-            <Eyebrow>Pricing</Eyebrow>
-            <BlurText text="Start free. Upgrade when you're hiring more." className="mb-8 mt-4 max-w-[560px] text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px]" />
+            <div className="text-center"><Eyebrow>Pricing</Eyebrow></div>
+            <BlurText text="Start free. Upgrade when you're hiring more." className="mx-auto mb-8 mt-4 max-w-[560px] text-center text-[32px] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[40px] [text-wrap:balance]" />
             <Pricing />
           </div>
         </Shell>

@@ -17,7 +17,7 @@ export function Pricing() {
   const [yearly, setYearly] = useState(true);
   return (
     <div>
-      <div className="mb-8 inline-flex rounded-full bg-gray-50 p-1 ring-1 ring-black/[0.05]">
+      <div className="mx-auto mb-8 flex w-fit rounded-full bg-gray-50 p-1 ring-1 ring-black/[0.05]">
         {[["Monthly", false], ["Yearly · save 20%", true]].map(([l, v]) => (
           <button key={l as string} onClick={() => setYearly(v as boolean)} className={cn("h-8 rounded-full px-4 text-[13px] transition-all", yearly === v ? "bg-white font-medium shadow-xs ring-1 ring-black/[0.06]" : "text-gray-500")}>{l as string}</button>
         ))}
