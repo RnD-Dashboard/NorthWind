@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 /* ------------------------------------------------------------------ helpers */
 
 /** Steps through a looping timeline while `active`; returns the current step index. */
-function useTimeline(durations: number[], active: boolean) {
+export function useTimeline(durations: number[], active: boolean) {
   const [i, setI] = useState(0);
   const key = durations.join(",");
   useEffect(() => {
@@ -37,7 +37,7 @@ function useTyped(text: string, on: boolean, speed = 34) {
 }
 
 /** Counts from 0 to `to` while `on`. */
-function useCount(to: number, on: boolean, ms = 900) {
+export function useCount(to: number, on: boolean, ms = 900) {
   const [v, setV] = useState(0);
   useEffect(() => {
     if (!on) { const r = setTimeout(() => setV(0), 0); return () => clearTimeout(r); }
@@ -49,7 +49,7 @@ function useCount(to: number, on: boolean, ms = 900) {
   return v;
 }
 
-const mono = "font-mono text-[10px] uppercase tracking-[0.08em]";
+export const mono = "font-mono text-[10px] uppercase tracking-[0.08em]";
 
 /** Window chrome shared by every kit: mono label on the left, live status on the right. */
 export function KitFrame({ label, status, dark, children, className }: { label: string; status: string; dark?: boolean; children: ReactNode; className?: string }) {
@@ -67,7 +67,7 @@ export function KitFrame({ label, status, dark, children, className }: { label: 
   );
 }
 
-function Ring({ value, size = 34, dark }: { value: number; size?: number; dark?: boolean }) {
+export function Ring({ value, size = 34, dark }: { value: number; size?: number; dark?: boolean }) {
   const r = (size - 5) / 2, c = 2 * Math.PI * r;
   return (
     <span className="relative inline-grid shrink-0 place-items-center" style={{ width: size, height: size }}>

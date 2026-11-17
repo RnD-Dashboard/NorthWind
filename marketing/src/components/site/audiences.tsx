@@ -6,27 +6,27 @@ import { useInView } from "@/components/site/motion";
 import {
   BadgeDollarSign, Briefcase, Clock, FolderKanban, Gauge, Layers, MailCheck, Repeat, Search, Share2, Sparkles, Users,
 } from "lucide-react";
-import { ComposerKit, CriteriaCard, MatchKit, PipelineKit } from "@/components/site/kit";
+import { CollectionKit, OpenRolesKit, ProfileKit, ShareKit } from "@/components/site/kits2";
 import { cn } from "@/lib/utils";
 
 const TABS = [
   {
-    key: "Startups", title: "Startups & founders", img: "/images/startups.jpg", kit: CriteriaCard,
+    key: "Startups", title: "Startups & founders", img: "/images/startups.jpg", kit: OpenRolesKit,
     d: "Run your own searches instead of paying agency fees. Describe the role and start reviewing people today.",
     points: [[BadgeDollarSign, "No agency fees"], [Sparkles, "Brief to shortlist in minutes"], [Search, "Every match explained"], [MailCheck, "Outreach from your own Gmail"]],
   },
   {
-    key: "In-house teams", title: "In-house talent teams", img: "/images/hills.jpg", kit: PipelineKit,
+    key: "In-house teams", title: "In-house talent teams", img: "/images/hills.jpg", kit: CollectionKit,
     d: "One shared place for every open role, so the whole team sees the same pipeline and nobody emails a candidate twice.",
     points: [[FolderKanban, "A collection per role"], [Users, "Shared notes and status"], [Gauge, "Live pipeline view"], [Repeat, "Sequences that stop on reply"]],
   },
   {
-    key: "Agencies", title: "Recruiting agencies", img: "/images/agencies.jpg", kit: MatchKit,
+    key: "Agencies", title: "Recruiting agencies", img: "/images/agencies.jpg", kit: ShareKit,
     d: "Work many client mandates at once, reuse talent pools and send shortlists clients can act on.",
     points: [[Layers, "Many roles at once"], [Repeat, "Reusable talent pools"], [Share2, "Shortlists you can share"], [Clock, "More time closing, less searching"]],
   },
   {
-    key: "Hiring managers", title: "Hiring managers", img: "/images/lake.jpg", kit: ComposerKit,
+    key: "Hiring managers", title: "Hiring managers", img: "/images/lake.jpg", kit: ProfileKit,
     d: "Get a scored shortlist for your role without waiting on recruiting, then reach out with a message that sounds like you.",
     points: [[Briefcase, "Hire for your own team"], [Search, "Clear match scores"], [MailCheck, "Personal first messages"], [Clock, "Replies in your inbox"]],
   },
