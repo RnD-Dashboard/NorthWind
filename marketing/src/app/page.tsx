@@ -287,25 +287,25 @@ export default function Home() {
         <div className="mx-auto max-w-[1240px] px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:px-14 lg:pt-32">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
             <div>
-              <BlurText text="Stop searching for candidates. Start talking to them." className="max-w-[560px] text-[36px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[52px]" muted={["Start", "talking", "to", "them"]} />
+              <BlurText text="Stop searching for candidates. Start talking to them." className="max-w-[560px] text-[36px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[52px]" />
               <FadeIn delay={300} className="mt-8 flex flex-wrap gap-2"><PrimaryCta>Start free trial</PrimaryCta><GhostCta href="mailto:hello@lasso.ai">Book a demo</GhostCta></FadeIn>
             </div>
-            <div className="grid grid-cols-3 gap-6 text-[13px]">
+            {/* Every link goes to a section on this page or to the app; no extra pages needed. */}
+            <div className="grid grid-cols-2 gap-6 text-[13px] sm:max-w-[360px] lg:ml-auto lg:w-full">
               {[
-                ["Product", [["AI sourcing", "#product"], ["Library", "#product"], ["Outreach", "#product"], ["Pricing", "#pricing"]]],
-                ["Solutions", [["Startups", "#solutions"], ["Agencies", "#solutions"], ["How it works", "#how"]]],
-                ["Company", [["Sign in", `${APP_URL}/login`], ["Start free trial", `${APP_URL}/signup`], ["Contact", "mailto:hello@lasso.ai"]]],
+                ["Explore", [["Product", "#product"], ["How it works", "#how"], ["Who it's for", "#solutions"], ["Pricing", "#pricing"], ["Blog", "#blog"]]],
+                ["Get started", [["Start free trial", `${APP_URL}/signup`], ["Sign in", `${APP_URL}/login`], ["Book a demo", "mailto:hello@lasso.ai"]]],
               ].map(([h, links]) => (
                 <div key={h as string}>
-                  <div className="text-gray-400">{h as string}</div>
-                  <ul className="mt-3 space-y-2">{(links as string[][]).map(([l, href]) => <li key={l}><Link href={href} className="text-gray-800 hover:text-foreground hover:underline">{l}</Link></li>)}</ul>
+                  <div className="text-gray-500">{h as string}</div>
+                  <ul className="mt-3 space-y-2">{(links as string[][]).map(([l, href]) => <li key={l}><Link href={href} className="text-gray-900 hover:underline">{l}</Link></li>)}</ul>
                 </div>
               ))}
             </div>
           </div>
           <div className="mt-[22vh] flex flex-wrap items-center justify-between gap-3 text-[12px] text-white/85">
             <span className="inline-flex items-center gap-2 rounded-full bg-ink-900/40 px-3 py-1.5 backdrop-blur"><Logo className="[&_span]:text-white" /></span>
-            <span className="inline-flex gap-4"><span>© 2026 Lasso</span><Link href="#" className="hover:underline">Terms</Link><Link href="#" className="hover:underline">Privacy</Link></span>
+            <span>© 2026 Lasso</span>
           </div>
         </div>
       </footer>
