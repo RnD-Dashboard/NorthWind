@@ -9,6 +9,7 @@ import { HeroBackdrop, HeroEmail, HeroProduct, TourLink } from "@/components/sit
 import { APP_URL } from "@/lib/site";
 import { Pricing } from "@/components/site/interactive";
 import { FeatureStack } from "@/components/site/features";
+import { Testimonials } from "@/components/site/testimonials";
 import { ComposerKit, CriteriaCard, MatchKit, NotifyCard, OrbitKit, StepMini } from "@/components/site/kit";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 
@@ -206,6 +207,17 @@ export default function Home() {
             </div>
           </div>
         </Shell>
+        <Band />
+
+        {/* ------------------------------------------------- Testimonials */}
+        <section className="overflow-hidden bg-white py-20 sm:py-24">
+          <div className="mx-auto max-w-[720px] px-5 text-center">
+            <span className="inline-flex rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.08em] text-gray-500 ring-1 ring-black/[0.08]">Testimonials</span>
+            <BlurText text="What hiring teams are saying" className="mt-4 text-[32px] leading-[1.1] sm:text-[44px]" />
+            <p className="mt-3 text-[16px] text-gray-500 sm:text-[17px]">Teams that hire every week, finding the right people in a fraction of the time.</p>
+          </div>
+          <div className="mt-12"><Testimonials /></div>
+        </section>
         <Band />
 
         {/* ------------------------------------------------------- Trust */}

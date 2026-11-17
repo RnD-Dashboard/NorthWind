@@ -31,7 +31,7 @@ export function FeatureStack() {
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-      <div className="lg:sticky lg:top-24 lg:self-start">
+      <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
         <Eyebrow light>Features</Eyebrow>
         <BlurText text="Everything a search needs, in one place" className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
         <ol className="mt-10 hidden space-y-3 lg:block">
@@ -45,7 +45,7 @@ export function FeatureStack() {
         </ol>
       </div>
 
-      <div className="space-y-16 lg:space-y-0">
+      <div className="min-w-0 space-y-16 lg:space-y-0">
         {FEATURES.map((f, i) => {
           const Kit = f.kit;
           return (
