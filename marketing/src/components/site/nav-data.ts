@@ -1,4 +1,4 @@
-import { BookOpen, Building2, CalendarClock, FolderKanban, Quote, Rocket, Send, Sparkles, type LucideIcon } from "lucide-react";
+import { Building2, FolderKanban, Rocket, Send, Sparkles, type LucideIcon } from "lucide-react";
 
 /**
  * One source for the site's navigation, used by the header menus and the footer.
@@ -21,13 +21,16 @@ export const MENU: NavGroup[] = [
       { label: "Recruiting agencies", text: "Work many client roles at once.", icon: Building2, href: "/agencies", preview: "agencies", img: "/images/agencies.jpg" },
     ],
   },
-  {
-    label: "Resources", items: [
-      { label: "Customer stories", text: "How teams hire with Lasso.", icon: Quote, href: "/#stories" },
-      { label: "Blog", text: "Guides for teams that hire on their own.", icon: BookOpen, href: "/blog" },
-      { label: "Book a demo", text: "See Lasso on one of your roles.", icon: CalendarClock, href: "/contact" },
-    ],
-  },
 ];
 
 export const PRICING = { label: "Pricing", href: "/pricing" };
+
+/** Plain links in the header after the menus. Resources opens the blog. */
+export const LINKS = [{ label: "Resources", href: "/blog", match: "/blog" }, { label: "Pricing", href: "/pricing", match: "/pricing" }];
+
+/** Footer-only list for the Resources column. */
+export const RESOURCES = [
+  { label: "Blog", href: "/blog" },
+  { label: "Customer stories", href: "/#stories" },
+  { label: "Contact", href: "/contact" },
+];

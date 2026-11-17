@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 import { PrimaryCta } from "@/components/site/chrome";
 import { BlurText, Eyebrow, FadeIn } from "@/components/site/motion";
 import { APP_URL } from "@/lib/site";
-import { MENU, PRICING } from "@/components/site/nav-data";
+import { MENU, PRICING, RESOURCES } from "@/components/site/nav-data";
 
 /* Shared page pieces. The home page is the style guide; every page is built from these. */
 
@@ -101,7 +101,7 @@ export function HeroCtas() {
 const FOOTER: [string, { label: string; href?: string }[]][] = [
   ["Product", [...MENU[0].items, PRICING]],
   ["Solutions", MENU[1].items],
-  ["Resources", [...MENU[2].items.filter((x) => x.label !== "Book a demo"), { label: "Contact", href: "/contact" }]],
+  ["Resources", RESOURCES],
   ["Get started", [{ label: "Start free trial", href: `${APP_URL}/signup` }, { label: "Sign in", href: `${APP_URL}/login` }, { label: "Book a demo", href: "/contact" }]],
 ];
 

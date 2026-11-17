@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ChatKit, SequenceKit, StillContext } from "@/components/site/kit";
 import { CollectionKit, OpenRolesKit, ShareKit } from "@/components/site/kits2";
-import { MENU, PRICING, type NavGroup, type NavItem } from "@/components/site/nav-data";
+import { LINKS, MENU, type NavGroup, type NavItem } from "@/components/site/nav-data";
 import { cn } from "@/lib/utils";
 
 const PREVIEWS = { sourcing: ChatKit, library: CollectionKit, outreach: SequenceKit, startups: OpenRolesKit, agencies: ShareKit };
@@ -94,7 +94,9 @@ export function MegaNav() {
           )}
         </div>
       ))}
-      <Link href={PRICING.href} className={cn("rounded-full px-3.5 py-2 text-[13px] transition-colors hover:text-foreground", path === PRICING.href ? "text-foreground" : "text-gray-700")}>{PRICING.label}</Link>
+      {LINKS.map((l) => (
+        <Link key={l.href} href={l.href} className={cn("rounded-full px-3.5 py-2 text-[13px] transition-colors hover:text-foreground", path.startsWith(l.match) ? "text-foreground" : "text-gray-700")}>{l.label}</Link>
+      ))}
     </nav>
   );
 }
@@ -118,7 +120,7 @@ export function MobileNav({ onPick }: { onPick: () => void }) {
           )}
         </div>
       ))}
-      <Link href={PRICING.href} onClick={onPick} className="block rounded-xl px-3 py-2.5 text-[14px] hover:bg-black/[0.04]">{PRICING.label}</Link>
+      {LINKS.map((l) => <Link key={l.href} href={l.href} onClick={onPick} className="block rounded-xl px-3 py-2.5 text-[14px] hover:bg-black/[0.04]">{l.label}</Link>)}
       <Link href="/contact" onClick={onPick} className="block rounded-xl px-3 py-2.5 text-[14px] hover:bg-black/[0.04]">Contact sales</Link>
     </div>
   );
