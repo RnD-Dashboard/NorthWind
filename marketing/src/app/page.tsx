@@ -206,7 +206,7 @@ export default function Home() {
               <Eyebrow>You stay in control</Eyebrow>
               <BlurText text="AI that does the legwork. You make the calls." className="mt-4 max-w-[440px] text-[32px] leading-[1.1] sm:text-[40px]" />
               <div className="mt-10 flex flex-wrap items-center gap-6 lg:mt-auto lg:pt-16">
-                {[["/badges/soc.png", "AICPA SOC"], ["/badges/iso-27001.png", "ISO 27001 certified"], ["/badges/gdpr.png", "GDPR"]].map(([src, alt], k) => (
+                {[["/badges/soc-2.png", "AICPA SOC 2"], ["/badges/iso-27001.png", "ISO 27001 certified"], ["/badges/gdpr.png", "GDPR"]].map(([src, alt], k) => (
                   <FadeIn key={src} delay={k * 90}>
                     <img src={src} alt={alt} width={84} height={84} className="size-[84px] object-contain" />
                   </FadeIn>
